@@ -9,7 +9,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.autocommunity.model.Results;
+import com.example.autocommunity.pages.DiscussionFragment;
 import com.example.autocommunity.pages.HomeFragment;
+import com.example.autocommunity.pages.ProfileFragment;
+import com.example.autocommunity.pages.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -22,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bnv;
 
     HomeFragment homeFragment;
+    SearchFragment searchFragment;
+    DiscussionFragment discussionFragment;
+    ProfileFragment profileFragment;
 
 
 
@@ -32,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
         bnv = findViewById(R.id.bnvMain);
         homeFragment = new HomeFragment();
+        searchFragment = new SearchFragment();
+        discussionFragment = new DiscussionFragment();
+        profileFragment = new ProfileFragment();
 
         connect();
 
@@ -48,6 +57,24 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager()
                                 .beginTransaction()
                                 .replace(R.id.fragmentContainerView, homeFragment)
+                                .commit();
+                        return true;
+                    case R.id.miSearch:
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.fragmentContainerView, searchFragment)
+                                .commit();
+                        return true;
+                    case R.id.miDiscuss:
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.fragmentContainerView, discussionFragment)
+                                .commit();
+                        return true;
+                    case R.id.miProfile:
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.fragmentContainerView, profileFragment)
                                 .commit();
                         return true;
                 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    >
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivSearchProfileimage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:padding="10dp"
+        android:src="@drawable/profile1"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSearchUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="roshan_photography___"
+        app:layout_constraintStart_toEndOf="@+id/ivSearchProfileimage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSearchlocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Manglore India"
+        app:layout_constraintBottom_toBottomOf="@+id/ivSearchProfileimage"
+        app:layout_constraintStart_toStartOf="@+id/tvSearchUsername"
+        app:layout_constraintTop_toBottomOf="@+id/tvSearchUsername" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/btnSearchdm"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:padding="10dp"
+        android:src="@drawable/baseline_chat_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSearchDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Roshan Girish | Photography Photographer Based in India 🇮🇳"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivSearchProfileimage" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
