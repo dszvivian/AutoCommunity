@@ -13,7 +13,6 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/rounded_background"
         android:orientation="vertical"
         android:padding="20dp">
 
@@ -22,11 +21,10 @@
             android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp"
-            android:src="@drawable/logo"
-            app:srcCompat="@drawable/_240" />
+            app:srcCompat="@drawable/ic_launcher_background" />
 
         <EditText
-            android:id="@+id/editTextEmail"
+            android:id="@+id/editTextmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -76,7 +74,6 @@
             android:id="@+id/buttonSignInWithGoogle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_background"
             android:text="Sign In with Google"
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
