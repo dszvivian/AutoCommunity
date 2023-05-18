@@ -3,10 +3,9 @@ package com.example.autocommunity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
-import android.arch.lifecycle.LifecycleOwner;
+
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.util.Log;
+
 import android.widget.TextView;
 
 import com.example.autocommunity.api.ApiService;
@@ -37,25 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void connect() {
 
-//        Call<Results> getData = RetrofitClient.getInstance().getMyApi().getData();
-//        getData.enqueue(new Callback<Results>() {
-//                            @Override
-//                            public void onResponse(Call<Results> call, Response<Results> response) {
-//                                Results data = response.body();
-//                                System.out.println(data);
-//                                tvData.setText(data.getName());
-//                            }
-//                            @Override
-//                            public void onFailure(Call<Results> call, Throwable t) {
-//                                Log.d("Error","Error");
-//                                tvData.setText("ERROR"+t);
-//                            }
-//                        }
-//        );
-//    }
-
         ApiViewModel vm = new ApiViewModel();
-
         vm.getData().observe(this, new Observer<Results>() {
             @Override
             public void onChanged(Results results) {
