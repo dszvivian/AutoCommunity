@@ -7,6 +7,7 @@
     android:foregroundTint="#31020101"
     app:circularflow_radiusInDP="40dp ">
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -35,6 +36,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.63" />
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/tb_profile"
+        android:layoutDirection="ltr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/tb_profile"
+        app:title="Profile"
+        />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="143dp"
@@ -55,7 +70,6 @@
         android:text="Description"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.943"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
