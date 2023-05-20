@@ -3,7 +3,7 @@
     <style name="Theme.AutoCommunity" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/darkYellow</item>
-        <item name="colorPrimaryVariant">@color/lightYellow</item>
+        <item name="colorPrimaryVariant">@color/darkYellow</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

@@ -7,17 +7,17 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/tb_home"
+        android:layout_width="411dp"
+        android:layout_height="58dp"
+        android:background="@color/darkYellow"
         android:layoutDirection="ltr"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:title="AutoVerse"
-        app:menu="@menu/tb_items"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/tb_items"
+        app:title="AutoVerse" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvHome"
@@ -25,7 +25,7 @@
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/btmnav_round"
+        android:background="@drawable/btmnav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
