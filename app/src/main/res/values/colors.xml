@@ -9,5 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="darkYellow">#FBC02D</color>
     <color name="lightYellow">#FBC02D</color>
-
+    <color name="grayishWhite">#F1EDED</color>
+    <color name="greyishtext">#474444</color>
 </resources>
