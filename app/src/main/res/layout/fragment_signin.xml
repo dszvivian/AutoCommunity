@@ -7,15 +7,15 @@
 
 
     <EditText
-        android:id="@+id/etEmailSignIn"
+        android:id="@+id/etUsernameSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@color/grayishWhite"
         android:ems="10"
-        android:hint="Enter Email"
+        android:hint="Enter Username"
 
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:autofillHints="emailAddress"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -47,9 +47,9 @@
 
         android:textStyle="bold|normal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/etEmailSignIn"
-        app:layout_constraintStart_toStartOf="@+id/etEmailSignIn"
-        app:layout_constraintTop_toBottomOf="@+id/etEmailSignIn" />
+        app:layout_constraintEnd_toEndOf="@+id/etUsernameSignIn"
+        app:layout_constraintStart_toStartOf="@+id/etUsernameSignIn"
+        app:layout_constraintTop_toBottomOf="@+id/etUsernameSignIn" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSignIn"
