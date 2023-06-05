@@ -1,4 +1,4 @@
-package com.example.autocommunity.model;
+package com.example.autocommunity.pages.model;
 
 public class SearchPageItemModel {
 
