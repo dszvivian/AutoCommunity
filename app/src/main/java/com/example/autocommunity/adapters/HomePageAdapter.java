@@ -1,7 +1,5 @@
 package com.example.autocommunity.adapters;
 
-import static android.os.Build.VERSION_CODES.R;
-
 import static com.example.autocommunity.R.id;
 
 import android.view.LayoutInflater;
@@ -14,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.autocommunity.R;
-import com.example.autocommunity.model.HomePageItemsModel;
+import com.example.autocommunity.pages.model.HomePageItemsModel;
 
 import java.util.List;
 

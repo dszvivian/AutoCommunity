@@ -14,10 +14,9 @@ import android.view.ViewGroup;
 
 import com.example.autocommunity.R;
 import com.example.autocommunity.adapters.HomePageAdapter;
-import com.example.autocommunity.model.HomePageItemsModel;
+import com.example.autocommunity.pages.model.HomePageItemsModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class HomeFragment extends Fragment {

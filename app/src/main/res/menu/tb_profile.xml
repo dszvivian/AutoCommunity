@@ -4,9 +4,8 @@
 
 
     <item
-        android:id="@+id/share"
-        android:icon="@drawable/baseline_share_24"
-        android:title="Share"
-        app:showAsAction="always" />
+        android:id="@+id/moreProfile"
+        android:title="more"
+        app:showAsAction="never" />
 
 </menu>

@@ -17,7 +17,7 @@ import androidx.navigation.Navigation;
 
 import com.example.autocommunity.ApiViewModel;
 import com.example.autocommunity.R;
-import com.example.autocommunity.model.User;
+import com.example.autocommunity.pages.model.User;
 
 public class SignupFragment extends Fragment {
 

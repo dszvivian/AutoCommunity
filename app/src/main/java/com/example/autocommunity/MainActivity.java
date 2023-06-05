@@ -3,12 +3,11 @@ package com.example.autocommunity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.autocommunity.model.Results;
+import com.example.autocommunity.pages.model.Results;
 import com.example.autocommunity.pages.DiscussionFragment;
 import com.example.autocommunity.pages.HomeFragment;
 import com.example.autocommunity.pages.ProfileFragment;

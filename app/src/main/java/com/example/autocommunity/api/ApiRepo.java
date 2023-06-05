@@ -6,8 +6,8 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.autocommunity.model.Results;
-import com.example.autocommunity.model.User;
+import com.example.autocommunity.pages.model.Results;
+import com.example.autocommunity.pages.model.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,7 +57,7 @@ public class ApiRepo {
     }
 
     public MutableLiveData<User> getUser(String username){
-        MutableLiveData<User> myUser = new MutableLiveData<>();
+        MutableLiveData<User> myUser = new MutableLiveData<User>();
 
         api.getUser(username).enqueue(new Callback<User>() {
             @Override

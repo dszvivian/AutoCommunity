@@ -1,4 +1,4 @@
-package com.example.autocommunity.model;
+package com.example.autocommunity.pages.model;
 
 import com.google.gson.annotations.SerializedName;
 
