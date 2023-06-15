@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.autocommunity.api.ApiRepo;
-import com.example.autocommunity.pages.model.Results;
-import com.example.autocommunity.pages.model.User;
+import com.example.autocommunity.model.Results;
+import com.example.autocommunity.model.User;
 
 import java.util.List;
 

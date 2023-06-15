@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.autocommunity.R;
-import com.example.autocommunity.pages.model.UserAssetsItemModel;
+import com.example.autocommunity.model.UserAssetsItemModel;
 
 import java.util.List;
 

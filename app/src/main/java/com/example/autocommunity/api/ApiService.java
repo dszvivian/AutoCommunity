@@ -1,7 +1,7 @@
 package com.example.autocommunity.api;
 
-import com.example.autocommunity.pages.model.Results;
-import com.example.autocommunity.pages.model.User;
+import com.example.autocommunity.model.Results;
+import com.example.autocommunity.model.User;
 
 import java.util.List;
 
