@@ -24,7 +24,5 @@ public class AuthActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
 
-
-
     }
 }
