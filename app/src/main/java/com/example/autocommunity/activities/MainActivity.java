@@ -11,6 +11,7 @@ import com.example.autocommunity.ApiViewModel;
 import com.example.autocommunity.R;
 import com.example.autocommunity.model.Results;
 import com.example.autocommunity.pages.DiscussionFragment;
+import com.example.autocommunity.pages.EventsFragment;
 import com.example.autocommunity.pages.HomeFragment;
 import com.example.autocommunity.pages.ProfileFragment;
 import com.example.autocommunity.pages.SearchFragment;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     SearchFragment searchFragment;
     DiscussionFragment discussionFragment;
     ProfileFragment profileFragment;
+    EventsFragment eventsFragment;
 
 
 
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         searchFragment = new SearchFragment();
         discussionFragment = new DiscussionFragment();
         profileFragment = new ProfileFragment();
+        eventsFragment = new EventsFragment();
 
         connect();
 
@@ -69,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.miDiscuss:
                         getSupportFragmentManager()
                                 .beginTransaction()
-                                .replace(R.id.fragmentContainerView, discussionFragment)
+                                .replace(R.id.fragmentContainerView, eventsFragment)
                                 .commit();
                         return true;
                     case R.id.miProfile:
