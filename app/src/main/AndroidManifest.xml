@@ -27,7 +27,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY" />
+            android:value="AIzaSyBzBds3D1xNTz-Tc5-4clJiGSQgNAIHVqE" />
 
         <activity
             android:name=".activities.OnboardingActivity"

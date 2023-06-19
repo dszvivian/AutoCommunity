@@ -11,4 +11,5 @@
     <color name="lightYellow">#FBC02D</color>
     <color name="grayishWhite">#F1EDED</color>
     <color name="greyishtext">#474444</color>
+    <color name="transparentBlack">#99000000</color>
 </resources>
