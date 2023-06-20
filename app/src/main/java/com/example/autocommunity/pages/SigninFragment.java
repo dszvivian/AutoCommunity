@@ -17,7 +17,9 @@ import androidx.navigation.Navigation;
 
 import com.example.autocommunity.ApiViewModel;
 import com.example.autocommunity.R;
-import com.example.autocommunity.pages.model.User;
+import com.example.autocommunity.model.User;
+
+import java.util.List;
 
 public class SigninFragment extends Fragment {
 
@@ -60,15 +62,18 @@ public class SigninFragment extends Fragment {
 
                 if(!(username.isEmpty() && password.isEmpty())){
 
-                    vm.getUser(username).observe(requireActivity(), new Observer<User>() {
+                    vm.getUser(username).observe(requireActivity(), new Observer<List<User>>() {
                         @Override
-                        public void onChanged(User user) {
-                            if(user.getPassword().equals(password)){
+                        public void onChanged(List<User> users) {
 
+                            User user = users.get(0);
+
+                            if(user.getPassword().equals(password)){
                                 Toast.makeText(requireActivity(),"SignIn Successful",Toast.LENGTH_SHORT).show();
                                 requireActivity().finish();
                                 Navigation.findNavController(requireActivity(),R.id.fragmentAuth)
                                         .navigate(R.id.action_signinFragment_to_mainActivity);
+                                System.out.print(user.getUsername()+user.getPassword());
                             }else{
                                 etPassword.setText("");
                                 Toast.makeText(requireActivity(),"Incorrect Password",Toast.LENGTH_SHORT).show();
@@ -76,13 +81,11 @@ public class SigninFragment extends Fragment {
                         }
                     });
 
+                }else{
+                    Toast.makeText(requireActivity(),"Some Fields ARe Empty",Toast.LENGTH_SHORT).show();
                 }
-
-
-
-
-            }
-        });
+                        }
+                    });
 
 
     }

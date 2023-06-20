@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.autocommunity.R;
-import com.example.autocommunity.pages.model.HomePageItemsModel;
+import com.example.autocommunity.model.HomePageItemsModel;
 
 import java.util.List;
 

@@ -1,0 +1,15 @@
+## Design
+    - [✓] onBoarding
+    - [ ] Profile
+        - [ ] Three tabbed 
+    - [ ] Events
+        - [ ] Tabbed Location
+            - [ ] Event Confirm Page 
+    - [ ] Posts 
+        - [ ] Basic Layout
+        - [ ] Comments(Opt)
+    - [ ] Discussions 
+        - [ ] Outer Layout
+        - [ ] Discussions Page
+    - [ ] Create Post
+        - [ ] Home Page Integration

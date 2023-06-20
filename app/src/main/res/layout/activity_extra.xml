@@ -4,18 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.AuthActivity">
+    tools:context=".activities.ExtraActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentAuth"
+        android:id="@+id/fragmentContainerView2"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/auth_navgraph"
-        app:defaultNavHost="true"
-        tools:layout="@layout/fragment_signin" />
+        app:navGraph="@navigation/extra_navgaph"
+        tools:layout="@layout/fragment_userdetailsform" />
 </androidx.constraintlayout.widget.ConstraintLayout>

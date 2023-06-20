@@ -1,7 +1,9 @@
 package com.example.autocommunity.api;
 
-import com.example.autocommunity.pages.model.Results;
-import com.example.autocommunity.pages.model.User;
+import com.example.autocommunity.model.Results;
+import com.example.autocommunity.model.User;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -20,7 +22,10 @@ public interface ApiService {
     Call<User> addNewUser(@Body User user);
 
     @GET("/users/{username}")
-    Call<User> getUser(@Path("username") String username);
+    Call<List<User>> getUser(@Path("username") String username);
+
+    @GET("/users/update/{username}")
+    Call<List<User>> updateUser(@Path("username")String username);
 
 
 }

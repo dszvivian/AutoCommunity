@@ -6,8 +6,10 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.autocommunity.pages.model.Results;
-import com.example.autocommunity.pages.model.User;
+import com.example.autocommunity.model.Results;
+import com.example.autocommunity.model.User;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,17 +58,17 @@ public class ApiRepo {
         return isAdded;
     }
 
-    public MutableLiveData<User> getUser(String username){
-        MutableLiveData<User> myUser = new MutableLiveData<User>();
+    public MutableLiveData<List<User>> getUser(String username){
+        MutableLiveData<List<User>> myUser = new MutableLiveData<List<User>>();
 
-        api.getUser(username).enqueue(new Callback<User>() {
+        api.getUser(username).enqueue(new Callback<List<User>>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 myUser.setValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(Call<List<User>> call, Throwable t) {
                 Log.e("Error", "onFailure" + t.toString());
             }
         });

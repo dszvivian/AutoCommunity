@@ -1,4 +1,4 @@
-package com.example.autocommunity;
+package com.example.autocommunity.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,13 +10,19 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.autocommunity.R;
+import com.example.autocommunity.databinding.ActivityAuthBinding;
+
 public class AuthActivity extends AppCompatActivity {
 
+    ActivityAuthBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_auth);
+        binding = ActivityAuthBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
 
     }
 }

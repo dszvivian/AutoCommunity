@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.autocommunity.R;
-import com.example.autocommunity.pages.model.SearchPageItemModel;
+import com.example.autocommunity.model.SearchPageItemModel;
 
 import java.util.ArrayList;
 
