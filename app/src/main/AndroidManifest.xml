@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AutoCommunity"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ProfileDetailsOBActivity"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -31,7 +33,7 @@
 
         <activity
             android:name=".activities.OnboardingActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".activities.ExtraActivity"
             android:exported="false" />

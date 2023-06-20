@@ -24,5 +24,8 @@ public interface ApiService {
     @GET("/users/{username}")
     Call<List<User>> getUser(@Path("username") String username);
 
+    @GET("/users/update/{username}")
+    Call<List<User>> updateUser(@Path("username")String username);
+
 
 }
