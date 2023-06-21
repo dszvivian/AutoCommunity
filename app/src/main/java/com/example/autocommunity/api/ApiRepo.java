@@ -4,10 +4,14 @@ package com.example.autocommunity.api;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.autocommunity.model.ProfileDetails;
 import com.example.autocommunity.model.Results;
 import com.example.autocommunity.model.User;
+
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -22,14 +26,14 @@ public class ApiRepo {
         MutableLiveData<Results> myData = new MutableLiveData<Results>();
 
         api.getData().enqueue(new Callback<Results>() {
-            @Override
-            public void onResponse(Call<Results> call, Response<Results> response) {
-                if(response.isSuccessful()){
-                    myData.setValue(response.body());
+                @Override
+                public void onResponse(Call<Results> call, Response<Results> response) {
+                    if(response.isSuccessful()){
+                        myData.setValue(response.body());
+                    }
                 }
-            }
 
-            @Override
+                @Override
             public void onFailure(Call<Results> call, Throwable t) {
                 Log.e("Error", "onFailure" + call.toString());
             }
@@ -74,6 +78,26 @@ public class ApiRepo {
         });
 
         return myUser;
+    }
+
+    public MutableLiveData<Boolean> updateUser(String username, ProfileDetails pd){
+
+        MutableLiveData<Boolean> isUpdated = new MutableLiveData<>();
+
+        api.updateUser(username, pd).enqueue(new Callback<ProfileDetails>() {
+            @Override
+            public void onResponse(Call<ProfileDetails> call, Response<ProfileDetails> response) {
+                isUpdated.setValue(true);
+            }
+
+            @Override
+            public void onFailure(Call<ProfileDetails> call, Throwable t) {
+                isUpdated.setValue(false);
+            }
+        });
+
+        return isUpdated;
+
     }
 
 

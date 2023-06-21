@@ -1,7 +1,10 @@
 package com.example.autocommunity.api;
 
+import com.example.autocommunity.model.ProfileDetails;
 import com.example.autocommunity.model.Results;
 import com.example.autocommunity.model.User;
+
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -24,8 +27,8 @@ public interface ApiService {
     @GET("/users/{username}")
     Call<List<User>> getUser(@Path("username") String username);
 
-    @GET("/users/update/{username}")
-    Call<List<User>> updateUser(@Path("username")String username);
+    @POST("/users/update/{username}")
+    Call<ProfileDetails> updateUser(@Path("username")String username, ProfileDetails profileDetails);
 
 
 }

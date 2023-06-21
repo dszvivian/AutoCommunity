@@ -50,7 +50,7 @@ public class ProfileFragment extends Fragment {
         tabsName.add("Events");
 
 
-        VPProfileAdapter vpProfileAdapter = new VPProfileAdapter(requireActivity().getSupportFragmentManager(), getLifecycle());
+        VPProfileAdapter vpProfileAdapter = new VPProfileAdapter(getChildFragmentManager(), getLifecycle());
         vpProfile.setAdapter(vpProfileAdapter);
 
         new TabLayoutMediator(tb_profile, vpProfile,
