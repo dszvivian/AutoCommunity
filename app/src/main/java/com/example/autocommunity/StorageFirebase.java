@@ -25,7 +25,6 @@ public class StorageFirebase {
         storageRef = FirebaseStorage.getInstance().getReference();
 
         StorageReference imageRef = storageRef.child(String.format("%s/%s.jpg",path, UUID.randomUUID()));
-        MutableLiveData<String> finalImageUrl = null;
 
         if(imageUri != null){
 
@@ -33,8 +32,7 @@ public class StorageFirebase {
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Task<Uri> uploadedImageUri = taskSnapshot.getStorage().getDownloadUrl();
-                            finalImageUrl.setValue(uploadedImageUri.toString());
+
                             Toast.makeText(context,"Uploaded Successfully",Toast.LENGTH_SHORT).show();
                         }
                     })

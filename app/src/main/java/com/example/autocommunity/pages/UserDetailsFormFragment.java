@@ -2,9 +2,11 @@ package com.example.autocommunity.pages;
 
 import static android.app.Activity.RESULT_OK;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +24,19 @@ import com.example.autocommunity.ApiViewModel;
 import com.example.autocommunity.R;
 import com.example.autocommunity.StorageFirebase;
 import com.example.autocommunity.model.ProfileDetails;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.UUID;
 
 public class UserDetailsFormFragment extends Fragment {
 
@@ -39,7 +49,9 @@ public class UserDetailsFormFragment extends Fragment {
 
     Uri avatarUri;
 
-    StorageFirebase storageFirebase;
+    FirebaseStorage storage;
+    StorageReference storageRef;
+    String uploadedImageUrl;
 
 
     @Nullable
@@ -58,7 +70,9 @@ public class UserDetailsFormFragment extends Fragment {
         etFName = view.findViewById(R.id.et_UDFFName);
         etDesc = view.findViewById(R.id.et_UDFDescription);
 
-        storageFirebase =new StorageFirebase();
+
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
 
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -85,30 +99,31 @@ public class UserDetailsFormFragment extends Fragment {
 
                 String name = etFName.getText().toString();
                 String desc = etDesc.getText().toString();
-//                String url = storageFirebase.uploadImage(getActivity(),avatarUri,"profileimages");
+                uploadImage();
+
 //todo: fix upload image
-                if(!(name.isEmpty() && desc.isEmpty())){
-
-                    ApiViewModel vm= new ApiViewModel();
-
-                    ProfileDetails pd = new ProfileDetails(name,"vdkfnkvjfv",desc);
-
-
-                    vm.updateUser("dszvivian",pd
-                            ).observe(requireActivity(), new Observer<Boolean>() {
-                        @Override
-                        public void onChanged(Boolean aBoolean) {
-                            if(aBoolean){
-                                Toast.makeText(requireActivity(),"Profile details Updated",Toast.LENGTH_SHORT).show();
-                            }else{
-                                Toast.makeText(requireActivity(),"Failed To Update Profile Details",Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-
-                }else{
-                    Toast.makeText(requireActivity(),"Some Fields are Empty",Toast.LENGTH_SHORT).show();
-                }
+//                if(!(name.isEmpty() && desc.isEmpty())){
+//
+//                    ApiViewModel vm= new ApiViewModel();
+//
+//                    ProfileDetails pd = new ProfileDetails(name,uploadedImageUrl,desc);
+//
+//
+//                    vm.updateUser("dszvivian",pd
+//                            ).observe(requireActivity(), new Observer<Boolean>() {
+//                        @Override
+//                        public void onChanged(Boolean aBoolean) {
+//                            if(aBoolean){
+//                                Toast.makeText(requireActivity(),"Profile details Updated",Toast.LENGTH_SHORT).show();
+//                            }else{
+//                                Toast.makeText(requireActivity(),"Failed To Update Profile Details",Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//                    });
+//
+//                }else{
+//                    Toast.makeText(requireActivity(),"Some Fields are Empty",Toast.LENGTH_SHORT).show();
+//                }
 
 
             }
@@ -134,4 +149,97 @@ public class UserDetailsFormFragment extends Fragment {
         }
 
     }
+
+    private void uploadImage()
+    {
+        if (avatarUri != null) {
+
+            // Code for showing progressDialog while uploading
+            ProgressDialog progressDialog
+                    = new ProgressDialog(requireActivity());
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
+
+            // Defining the child of storageReference
+            StorageReference ref
+                    = storageRef
+                    .child(
+                            "profileImages/"
+                                    + UUID.randomUUID().toString());
+
+            // adding listeners on upload
+            // or failure of image
+            ref.putFile(avatarUri)
+                    .addOnSuccessListener(
+                            new OnSuccessListener<UploadTask.TaskSnapshot>() {
+
+                                @Override
+                                public void onSuccess(
+                                        UploadTask.TaskSnapshot taskSnapshot)
+                                {
+
+                                    // Image uploaded successfully
+                                    // Dismiss dialog
+
+                                    ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+                                            Log.d("URL", uri.toString());
+                                            // This is the complete uri, you can store it to realtime database
+
+                                            progressDialog.dismiss();
+                                            uploadedImageUrl = uri.toString();
+
+                                            Toast.makeText(requireActivity(),
+                                                            uri.toString(),
+                                                            Toast.LENGTH_SHORT)
+                                                    .show();
+                                        }
+                                    });
+
+
+
+
+
+                                }
+                            })
+
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e)
+                        {
+
+                            // Error, Image not uploaded
+                            progressDialog.dismiss();
+                            Toast
+                                    .makeText(requireActivity(),
+                                            "Failed " + e.getMessage(),
+                                            Toast.LENGTH_SHORT)
+                                    .show();
+                        }
+                    })
+                    .addOnProgressListener(
+                            new OnProgressListener<UploadTask.TaskSnapshot>() {
+
+                                // Progress Listener for loading
+                                // percentage on the dialog box
+                                @Override
+                                public void onProgress(
+                                        UploadTask.TaskSnapshot taskSnapshot)
+                                {
+                                    double progress
+                                            = (100.0
+                                            * taskSnapshot.getBytesTransferred()
+                                            / taskSnapshot.getTotalByteCount());
+                                    progressDialog.setMessage(
+                                            "Uploaded "
+                                                    + (int)progress + "%");
+                                }
+                            });
+
+        }
+    }
+
+
+
 }
