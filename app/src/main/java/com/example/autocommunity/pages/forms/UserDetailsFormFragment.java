@@ -187,6 +187,8 @@ public class UserDetailsFormFragment extends Fragment {
                                             Log.d("URL", uri.toString());
                                             // This is the complete uri, you can store it to realtime database
 
+                                            progressDialog.dismiss();
+
                                             Toast.makeText(requireActivity(),
                                                             "Suceessfully Uploaded Image",
                                                             Toast.LENGTH_SHORT)
@@ -233,6 +235,8 @@ public class UserDetailsFormFragment extends Fragment {
                                             "Uploaded "
                                                     + (int)progress + "%");
                                 }
+
+
                             });
 
         }

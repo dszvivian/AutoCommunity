@@ -36,7 +36,11 @@ public interface ApiService {
     Call<List<ProfileDetails>> getUserProfileDetails(@Path("username") String username);
 
     @POST("/users/assets/{username}")
-    Call<UserAssetsItemModel> addNewAsset(@Path("username")String username,@Body Asset asset);
+    Call<Asset> addNewAsset(@Path("username")String username,@Body Asset asset);
+
+    @GET("/users/assets/{username}")
+    Call<List<Asset>> getAssetsByUsername(@Path("username") String username);
+
 
 
 }

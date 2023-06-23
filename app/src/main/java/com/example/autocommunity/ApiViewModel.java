@@ -28,6 +28,8 @@ public class ApiViewModel extends ViewModel {
 
     private  androidx.lifecycle.MutableLiveData<Boolean> isAssetAdded;
 
+    private androidx.lifecycle.MutableLiveData<List<Asset>> getAssetsByUsername;
+
     public ApiViewModel(){
         repo = new ApiRepo();
     }
@@ -73,6 +75,15 @@ public class ApiViewModel extends ViewModel {
             isAssetAdded = repo.createNewAsset(username,asset);
         }
         return isAssetAdded;
+    }
+
+    public MutableLiveData<List<Asset>> getAssetsByUsername(String username){
+
+        if(getAssetsByUsername==null){
+            getAssetsByUsername = repo.getAssetsByUsername(username);
+        }
+
+        return getAssetsByUsername;
     }
 
 

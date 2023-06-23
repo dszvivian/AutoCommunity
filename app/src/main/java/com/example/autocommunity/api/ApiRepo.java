@@ -133,14 +133,14 @@ public class ApiRepo {
 
         MutableLiveData<Boolean> isAssetAdded = new MutableLiveData<>();
 
-        api.addNewAsset(username, asset).enqueue(new Callback<UserAssetsItemModel>() {
+        api.addNewAsset(username, asset).enqueue(new Callback<Asset>() {
             @Override
-            public void onResponse(Call<UserAssetsItemModel> call, Response<UserAssetsItemModel> response) {
+            public void onResponse(Call<Asset> call, Response<Asset> response) {
                 isAssetAdded.setValue(true);
             }
 
             @Override
-            public void onFailure(Call<UserAssetsItemModel> call, Throwable t) {
+            public void onFailure(Call<Asset> call, Throwable t) {
                 isAssetAdded.setValue(false);
                 Log.e(ERROR,t.getMessage());
             }
@@ -149,6 +149,25 @@ public class ApiRepo {
 
 
         return isAssetAdded;
+    }
+
+
+    public MutableLiveData<List<Asset>> getAssetsByUsername(String username){
+        MutableLiveData<List<Asset>> assets = new MutableLiveData<>();
+
+        api.getAssetsByUsername(username).enqueue(new Callback<List<Asset>>() {
+            @Override
+            public void onResponse(Call<List<Asset>> call, Response<List<Asset>> response) {
+                assets.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Asset>> call, Throwable t) {
+                Log.e(ERROR,t.getMessage());
+            }
+        });
+
+        return assets;
     }
 
 

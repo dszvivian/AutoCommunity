@@ -36,11 +36,11 @@ import java.util.UUID;
 
 public class ANVFormFragment extends Fragment {
 
-    Button btnSave,btnChooseImage,btnUploadImage;
+    Button btnSave, btnChooseImage, btnUploadImage;
     ImageButton btnCancel;
     EditText etModelName;
 
-    final int IMAGE_REQ_CODE = 22;
+    final int IMAGE_REQ_CODE = 24;
 
     Uri uri;
 
@@ -51,7 +51,7 @@ public class ANVFormFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.anvform_fragment,container,false);
+        return inflater.inflate(R.layout.anvform_fragment, container, false);
     }
 
     @Override
@@ -66,7 +66,6 @@ public class ANVFormFragment extends Fragment {
 
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
-
 
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -90,28 +89,28 @@ public class ANVFormFragment extends Fragment {
 
                 String assetName = etModelName.getText().toString();
 
-                ApiViewModel vm=new ApiViewModel();
+                ApiViewModel vm = new ApiViewModel();
                 //todo: get username from SharedPreferences
 
-                if(!(assetName.isEmpty())){
-                    vm.isAssetAdded("dszvivian",new Asset(assetName,uploadedImageUrl)).observe(requireActivity(), new Observer<Boolean>() {
+                Asset asset = new Asset(assetName, uploadedImageUrl);
+
+                if (!(assetName.isEmpty())) {
+                    vm.isAssetAdded("dszvivian", asset).observe(requireActivity(), new Observer<Boolean>() {
                         @Override
                         public void onChanged(Boolean aBoolean) {
 
-                            if(aBoolean){
-                                Toast.makeText(requireActivity(),"New Asset Updated",Toast.LENGTH_SHORT).show();
+                            if (aBoolean) {
+                                Toast.makeText(requireActivity(), "New Asset Updated", Toast.LENGTH_SHORT).show();
                                 requireActivity().onBackPressed();
-                            }else{
-                                Toast.makeText(requireActivity(),"Failed to Add AssetData",Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(requireActivity(), "Failed to Add AssetData", Toast.LENGTH_SHORT).show();
                             }
 
                         }
                     });
-                }else{
-                    Toast.makeText(requireActivity(),"Some Fields are Empty",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(requireActivity(), "Some Fields are Empty", Toast.LENGTH_SHORT).show();
                 }
-
-
 
 
             }
@@ -123,19 +122,14 @@ public class ANVFormFragment extends Fragment {
                 Intent getImage = new Intent();
                 getImage.setAction(Intent.ACTION_GET_CONTENT);
                 getImage.setType("image/*");
-                startActivityForResult(getImage,IMAGE_REQ_CODE);
+                startActivityForResult(getImage, IMAGE_REQ_CODE);
             }
         });
 
 
-
-
-
-
     }
 
-    private void uploadImage()
-    {
+    private void uploadImage() {
         if (uri != null) {
 
             // Code for showing progressDialog while uploading
@@ -159,8 +153,7 @@ public class ANVFormFragment extends Fragment {
 
                                 @Override
                                 public void onSuccess(
-                                        UploadTask.TaskSnapshot taskSnapshot)
-                                {
+                                        UploadTask.TaskSnapshot taskSnapshot) {
 
                                     // Image uploaded successfully
                                     // Dismiss dialog
@@ -171,6 +164,8 @@ public class ANVFormFragment extends Fragment {
                                             Log.d("URL", uri.toString());
                                             // This is the complete uri, you can store it to realtime database
 
+
+                                            progressDialog.dismiss();
                                             Toast.makeText(requireActivity(),
                                                             "Suceessfully Uploaded Image",
                                                             Toast.LENGTH_SHORT)
@@ -180,16 +175,12 @@ public class ANVFormFragment extends Fragment {
                                     });
 
 
-
-
-
                                 }
                             })
 
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
-                        public void onFailure(@NonNull Exception e)
-                        {
+                        public void onFailure(@NonNull Exception e) {
 
                             // Error, Image not uploaded
                             progressDialog.dismiss();
@@ -207,15 +198,14 @@ public class ANVFormFragment extends Fragment {
                                 // percentage on the dialog box
                                 @Override
                                 public void onProgress(
-                                        UploadTask.TaskSnapshot taskSnapshot)
-                                {
+                                        UploadTask.TaskSnapshot taskSnapshot) {
                                     double progress
                                             = (100.0
                                             * taskSnapshot.getBytesTransferred()
                                             / taskSnapshot.getTotalByteCount());
                                     progressDialog.setMessage(
                                             "Uploaded "
-                                                    + (int)progress + "%");
+                                                    + (int) progress + "%");
                                 }
                             });
 
@@ -227,10 +217,10 @@ public class ANVFormFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==IMAGE_REQ_CODE &&
+        if (requestCode == IMAGE_REQ_CODE &&
                 resultCode == RESULT_OK &&
                 data != null
-        ){
+        ) {
             uri = data.getData();
         }
 
