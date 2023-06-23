@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.autocommunity.api.ApiRepo;
+import com.example.autocommunity.model.Asset;
 import com.example.autocommunity.model.ProfileDetails;
 import com.example.autocommunity.model.Results;
 import com.example.autocommunity.model.User;
@@ -21,7 +22,11 @@ public class ApiViewModel extends ViewModel {
     private androidx.lifecycle.MutableLiveData<Boolean> isUserAdded;
     private androidx.lifecycle.MutableLiveData<List<User>> getUser;
 
+    private androidx.lifecycle.MutableLiveData<List<ProfileDetails>> getProfileDetails;
+
     private  androidx.lifecycle.MutableLiveData<Boolean> isProfileInfoUpdated;
+
+    private  androidx.lifecycle.MutableLiveData<Boolean> isAssetAdded;
 
     public ApiViewModel(){
         repo = new ApiRepo();
@@ -48,11 +53,26 @@ public class ApiViewModel extends ViewModel {
         return getUser;
     }
 
-    public MutableLiveData<Boolean> updateUser(String username, ProfileDetails pd){
+    public MutableLiveData<Boolean> updateProfileData(String username,ProfileDetails pd){
         if(isProfileInfoUpdated==null){
-            isProfileInfoUpdated = repo.updateUser(username,pd);
+            isProfileInfoUpdated = repo.updateProfileDetails(username, pd);
         }
         return isProfileInfoUpdated;
+    }
+
+    public MutableLiveData<List<ProfileDetails>> getProfileDetails(String username){
+        if(getProfileDetails==null){
+            getProfileDetails = repo.getProfileDetails(username);
+        }
+        return getProfileDetails;
+    }
+
+
+    public MutableLiveData<Boolean> isAssetAdded(String username,Asset asset){
+        if(isAssetAdded==null){
+            isAssetAdded = repo.createNewAsset(username,asset);
+        }
+        return isAssetAdded;
     }
 
 

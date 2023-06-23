@@ -1,5 +1,7 @@
 package com.example.autocommunity.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class UserAssetsItemModel {
 
     int assetImage;

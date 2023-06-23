@@ -1,8 +1,10 @@
 package com.example.autocommunity.api;
 
+import com.example.autocommunity.model.Asset;
 import com.example.autocommunity.model.ProfileDetails;
 import com.example.autocommunity.model.Results;
 import com.example.autocommunity.model.User;
+import com.example.autocommunity.model.UserAssetsItemModel;
 
 import org.json.JSONObject;
 
@@ -28,7 +30,13 @@ public interface ApiService {
     Call<List<User>> getUser(@Path("username") String username);
 
     @POST("/users/update/{username}")
-    Call<ProfileDetails> updateUser(@Path("username")String username, ProfileDetails profileDetails);
+    Call<ProfileDetails> updateProfileData(@Path("username")String username,@Body ProfileDetails pd);
+
+    @GET("/users/{username}")
+    Call<List<ProfileDetails>> getUserProfileDetails(@Path("username") String username);
+
+    @POST("/users/assets/{username}")
+    Call<UserAssetsItemModel> addNewAsset(@Path("username")String username,@Body Asset asset);
 
 
 }

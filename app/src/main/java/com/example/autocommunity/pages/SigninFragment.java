@@ -82,7 +82,7 @@ public class SigninFragment extends Fragment {
                     });
 
                 }else{
-                    Toast.makeText(requireActivity(),"Some Fields ARe Empty",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity(),"Some Fields Are Empty",Toast.LENGTH_SHORT).show();
                 }
                         }
                     });

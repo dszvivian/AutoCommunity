@@ -7,14 +7,13 @@
     tools:context=".activities.ExtraActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView2"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:id="@+id/fc_extra"
+        android:name="com.example.autocommunity.pages.forms.UserDetailsFormFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/extra_navgaph"
         tools:layout="@layout/fragment_userdetailsform" />
 </androidx.constraintlayout.widget.ConstraintLayout>

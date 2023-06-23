@@ -6,6 +6,21 @@
 
     <fragment
         android:id="@+id/userDetailsFormFragment"
-        android:name="com.example.autocommunity.pages.UserDetailsFormFragment"
+        android:name="com.example.autocommunity.pages.forms.UserDetailsFormFragment"
         android:label="UserDetailsFormFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.autocommunity.pages.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_userDetailsFormFragment"
+            app:destination="@id/userDetailsFormFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_ANVFormFragment2"
+            app:destination="@id/ANVFormFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/ANVFormFragment2"
+        android:name="com.example.autocommunity.pages.forms.ANVFormFragment"
+        android:label="ANVFormFragment" />
 </navigation>
