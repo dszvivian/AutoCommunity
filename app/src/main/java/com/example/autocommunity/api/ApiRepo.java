@@ -2,14 +2,18 @@ package com.example.autocommunity.api;
 
 
 
+import static java.util.jar.Pack200.Packer.ERROR;
+
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.autocommunity.model.Asset;
 import com.example.autocommunity.model.ProfileDetails;
 import com.example.autocommunity.model.Results;
 import com.example.autocommunity.model.User;
+import com.example.autocommunity.model.UserAssetsItemModel;
 
 import org.json.JSONObject;
 
@@ -80,25 +84,74 @@ public class ApiRepo {
         return myUser;
     }
 
-    public MutableLiveData<Boolean> updateUser(String username, ProfileDetails pd){
-
+    public MutableLiveData<Boolean> updateProfileDetails(String username,ProfileDetails pd){
         MutableLiveData<Boolean> isUpdated = new MutableLiveData<>();
 
-        api.updateUser(username, pd).enqueue(new Callback<ProfileDetails>() {
+
+       api.updateProfileData(username,pd).enqueue(new Callback<ProfileDetails>() {
+           @Override
+           public void onResponse(Call<ProfileDetails> call, Response<ProfileDetails> response) {
+               if(response.isSuccessful()){
+                   isUpdated.setValue(true);
+               }
+           }
+
+           @Override
+           public void onFailure(Call<ProfileDetails> call, Throwable t) {
+               isUpdated.setValue(false);
+               Log.e(ERROR,t.getMessage());
+           }
+       });
+
+
+        return isUpdated;
+    }
+
+
+
+    public MutableLiveData<List<ProfileDetails>> getProfileDetails(String username){
+        MutableLiveData<List<ProfileDetails>> pd = new MutableLiveData<>();
+
+        api.getUserProfileDetails(username).enqueue(new Callback<List<ProfileDetails>>() {
             @Override
-            public void onResponse(Call<ProfileDetails> call, Response<ProfileDetails> response) {
-                isUpdated.setValue(true);
+            public void onResponse(Call<List<ProfileDetails>> call, Response<List<ProfileDetails>> response) {
+                pd.setValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<ProfileDetails> call, Throwable t) {
-                isUpdated.setValue(false);
+            public void onFailure(Call<List<ProfileDetails>> call, Throwable t) {
+                Log.e(ERROR,t.getMessage());
             }
         });
 
-        return isUpdated;
 
+        return pd;
     }
+
+
+    public MutableLiveData<Boolean> createNewAsset(String username,Asset asset){
+
+        MutableLiveData<Boolean> isAssetAdded = new MutableLiveData<>();
+
+        api.addNewAsset(username, asset).enqueue(new Callback<UserAssetsItemModel>() {
+            @Override
+            public void onResponse(Call<UserAssetsItemModel> call, Response<UserAssetsItemModel> response) {
+                isAssetAdded.setValue(true);
+            }
+
+            @Override
+            public void onFailure(Call<UserAssetsItemModel> call, Throwable t) {
+                isAssetAdded.setValue(false);
+                Log.e(ERROR,t.getMessage());
+            }
+        });
+
+
+
+        return isAssetAdded;
+    }
+
+
 
 
 

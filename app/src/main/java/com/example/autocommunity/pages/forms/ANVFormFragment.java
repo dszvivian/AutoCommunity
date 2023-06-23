@@ -1,4 +1,6 @@
-package com.example.autocommunity.pages;
+package com.example.autocommunity.pages.forms;
+
+//Form Fragment to add new Vehicle
 
 import static android.app.Activity.RESULT_OK;
 
@@ -22,57 +24,49 @@ import androidx.lifecycle.Observer;
 
 import com.example.autocommunity.ApiViewModel;
 import com.example.autocommunity.R;
-import com.example.autocommunity.StorageFirebase;
-import com.example.autocommunity.model.ProfileDetails;
+import com.example.autocommunity.model.Asset;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.UUID;
 
-public class UserDetailsFormFragment extends Fragment {
+public class ANVFormFragment extends Fragment {
 
-
-    Button uploadAvatar,btnSave;
+    Button btnSave,btnChooseImage,btnUploadImage;
     ImageButton btnCancel;
-    EditText etFName,etDesc;
+    EditText etModelName;
 
     final int IMAGE_REQ_CODE = 22;
 
-    Uri avatarUri;
+    Uri uri;
 
     FirebaseStorage storage;
     StorageReference storageRef;
     String uploadedImageUrl;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return  inflater.inflate(R.layout.fragment_userdetailsform, container, false);
+        return inflater.inflate(R.layout.anvform_fragment,container,false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btnCancel = view.findViewById(R.id.ib_udfCancel);
-        btnSave = view.findViewById(R.id.btn_UDFSave);
-        uploadAvatar = view.findViewById(R.id.btn_UDFUploadAvatar);
-        etFName = view.findViewById(R.id.et_UDFFName);
-        etDesc = view.findViewById(R.id.et_UDFDescription);
-
+        btnSave = view.findViewById(R.id.btn_ANVFSave);
+        btnChooseImage = view.findViewById(R.id.btn_ANVFChooseImage);
+        btnUploadImage = view.findViewById(R.id.btn_ANVFUploadImage);
+        etModelName = view.findViewById(R.id.et_ANVFVName);
+        btnCancel = view.findViewById(R.id.iv_ANVFcancel);
 
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
+
 
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -82,8 +76,48 @@ public class UserDetailsFormFragment extends Fragment {
             }
         });
 
+        btnUploadImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadImage();
+            }
+        });
 
-        uploadAvatar.setOnClickListener(new View.OnClickListener() {
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String assetName = etModelName.getText().toString();
+
+                ApiViewModel vm=new ApiViewModel();
+                //todo: get username from SharedPreferences
+
+                if(!(assetName.isEmpty())){
+                    vm.isAssetAdded("dszvivian",new Asset(assetName,uploadedImageUrl)).observe(requireActivity(), new Observer<Boolean>() {
+                        @Override
+                        public void onChanged(Boolean aBoolean) {
+
+                            if(aBoolean){
+                                Toast.makeText(requireActivity(),"New Asset Updated",Toast.LENGTH_SHORT).show();
+                                requireActivity().onBackPressed();
+                            }else{
+                                Toast.makeText(requireActivity(),"Failed to Add AssetData",Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    });
+                }else{
+                    Toast.makeText(requireActivity(),"Some Fields are Empty",Toast.LENGTH_SHORT).show();
+                }
+
+
+
+
+            }
+        });
+
+        btnChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent getImage = new Intent();
@@ -93,66 +127,16 @@ public class UserDetailsFormFragment extends Fragment {
             }
         });
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String name = etFName.getText().toString();
-                String desc = etDesc.getText().toString();
-                uploadImage();
-
-//todo: fix upload image
-//                if(!(name.isEmpty() && desc.isEmpty())){
-//
-//                    ApiViewModel vm= new ApiViewModel();
-//
-//                    ProfileDetails pd = new ProfileDetails(name,uploadedImageUrl,desc);
-//
-//
-//                    vm.updateUser("dszvivian",pd
-//                            ).observe(requireActivity(), new Observer<Boolean>() {
-//                        @Override
-//                        public void onChanged(Boolean aBoolean) {
-//                            if(aBoolean){
-//                                Toast.makeText(requireActivity(),"Profile details Updated",Toast.LENGTH_SHORT).show();
-//                            }else{
-//                                Toast.makeText(requireActivity(),"Failed To Update Profile Details",Toast.LENGTH_SHORT).show();
-//                            }
-//                        }
-//                    });
-//
-//                }else{
-//                    Toast.makeText(requireActivity(),"Some Fields are Empty",Toast.LENGTH_SHORT).show();
-//                }
-
-
-            }
-        });
 
 
 
 
-
-
-
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode==IMAGE_REQ_CODE &&
-            resultCode == RESULT_OK &&
-                data != null
-        ){
-            avatarUri = data.getData();
-        }
 
     }
 
     private void uploadImage()
     {
-        if (avatarUri != null) {
+        if (uri != null) {
 
             // Code for showing progressDialog while uploading
             ProgressDialog progressDialog
@@ -164,12 +148,12 @@ public class UserDetailsFormFragment extends Fragment {
             StorageReference ref
                     = storageRef
                     .child(
-                            "profileImages/"
+                            "assetImages/"
                                     + UUID.randomUUID().toString());
 
             // adding listeners on upload
             // or failure of image
-            ref.putFile(avatarUri)
+            ref.putFile(uri)
                     .addOnSuccessListener(
                             new OnSuccessListener<UploadTask.TaskSnapshot>() {
 
@@ -187,13 +171,11 @@ public class UserDetailsFormFragment extends Fragment {
                                             Log.d("URL", uri.toString());
                                             // This is the complete uri, you can store it to realtime database
 
-                                            progressDialog.dismiss();
-                                            uploadedImageUrl = uri.toString();
-
                                             Toast.makeText(requireActivity(),
-                                                            uri.toString(),
+                                                            "Suceessfully Uploaded Image",
                                                             Toast.LENGTH_SHORT)
                                                     .show();
+                                            uploadedImageUrl = uri.toString();
                                         }
                                     });
 
@@ -240,6 +222,19 @@ public class UserDetailsFormFragment extends Fragment {
         }
     }
 
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==IMAGE_REQ_CODE &&
+                resultCode == RESULT_OK &&
+                data != null
+        ){
+            uri = data.getData();
+        }
+
+    }
 
 
 }

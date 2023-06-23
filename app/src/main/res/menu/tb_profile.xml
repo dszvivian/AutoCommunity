@@ -4,8 +4,15 @@
 
 
     <item
-        android:id="@+id/moreProfile"
-        android:title="more"
+        android:id="@+id/moreProfileCreateAsset"
+        android:title="Add New Vehicle"
         app:showAsAction="never" />
+
+
+    <item
+        android:id="@+id/moreProfileCreatePost"
+        android:title="New Post"
+        app:showAsAction="never" />
+
 
 </menu>

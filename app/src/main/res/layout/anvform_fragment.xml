@@ -7,11 +7,11 @@
     android:layout_margin="5dp">
 
     <EditText
-        android:id="@+id/et_UDFFName"
+        android:id="@+id/et_ANVFVName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Enter Full Name"
+        android:hint="Enter Vehicle Model"
         android:inputType="text"
         android:minHeight="48dp"
         android:padding="20dp"
@@ -22,47 +22,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/et_UDFDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Bio"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:padding="20dp"
-        android:textSize="21sp"
-        android:textStyle="bold|normal"
-        app:layout_constraintEnd_toEndOf="@+id/et_UDFFName"
-        app:layout_constraintStart_toStartOf="@+id/et_UDFFName"
-        app:layout_constraintTop_toBottomOf="@+id/et_UDFFName" />
-
     <Button
-        android:id="@+id/btn_UDFUploadAvatar"
+        android:id="@+id/btn_ANVFChooseImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:padding="3dp"
         android:text="Choose Image"
-        app:layout_constraintEnd_toStartOf="@+id/btn_UDFUploadImage"
-        app:layout_constraintStart_toStartOf="@+id/et_UDFDescription"
-        app:layout_constraintTop_toBottomOf="@+id/et_UDFDescription" />
+        app:layout_constraintEnd_toStartOf="@+id/btn_ANVFUploadImage"
+        app:layout_constraintStart_toStartOf="@+id/et_ANVFVName"
+        app:layout_constraintTop_toBottomOf="@+id/et_ANVFVName" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_UDFSave"
+        android:id="@+id/btn_ANVFSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@color/purple_700"
         android:text="Save"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/et_UDFFName"
+        app:layout_constraintEnd_toEndOf="@+id/et_ANVFVName"
         app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="@+id/et_UDFFName"
-        app:layout_constraintTop_toBottomOf="@+id/btn_UDFUploadAvatar" />
+        app:layout_constraintStart_toStartOf="@+id/et_ANVFVName"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ANVFChooseImage" />
 
     <ImageButton
-        android:id="@+id/iv_UDFcancel"
+        android:id="@+id/iv_ANVFcancel"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
@@ -76,14 +61,14 @@
         app:srcCompat="@drawable/baseline_cancel_24" />
 
     <Button
-        android:id="@+id/btn_UDFUploadImage"
+        android:id="@+id/btn_ANVFUploadImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:text="Upload Image"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_UDFUploadAvatar"
-        app:layout_constraintEnd_toEndOf="@+id/et_UDFDescription"
-        app:layout_constraintStart_toEndOf="@+id/btn_UDFUploadAvatar"
-        app:layout_constraintTop_toTopOf="@+id/btn_UDFUploadAvatar" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_ANVFChooseImage"
+        app:layout_constraintEnd_toEndOf="@+id/et_ANVFVName"
+        app:layout_constraintStart_toEndOf="@+id/btn_ANVFChooseImage"
+        app:layout_constraintTop_toTopOf="@+id/btn_ANVFChooseImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
