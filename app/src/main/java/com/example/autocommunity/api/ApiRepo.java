@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.autocommunity.model.Asset;
+import com.example.autocommunity.model.Post;
 import com.example.autocommunity.model.ProfileDetails;
 import com.example.autocommunity.model.Results;
 import com.example.autocommunity.model.User;
@@ -18,6 +19,7 @@ import com.example.autocommunity.model.UserDetails;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -190,6 +192,23 @@ public class ApiRepo {
         return allUsers;
     }
 
+    public MutableLiveData<ArrayList<Post>> getAllPosts(){
+        MutableLiveData<ArrayList<Post>> posts = new MutableLiveData<>();
+
+        api.getAllPosts().enqueue(new Callback<ArrayList<Post>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Post>> call, Response<ArrayList<Post>> response) {
+                posts.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Post>> call, Throwable t) {
+                Log.e(ERROR,t.getMessage());
+            }
+        });
+
+        return posts;
+    }
 
 
 

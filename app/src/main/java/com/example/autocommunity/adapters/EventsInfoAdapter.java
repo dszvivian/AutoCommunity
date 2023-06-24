@@ -56,13 +56,6 @@ public class EventsInfoAdapter extends RecyclerView.Adapter<EventsInfoAdapter.Vi
             }
         });
 
-
-
-
-
-
-
-
         OnMapReadyCallback callback = new OnMapReadyCallback() {
 
             @Override

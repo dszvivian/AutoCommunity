@@ -1,6 +1,7 @@
 package com.example.autocommunity.api;
 
 import com.example.autocommunity.model.Asset;
+import com.example.autocommunity.model.Post;
 import com.example.autocommunity.model.ProfileDetails;
 import com.example.autocommunity.model.Results;
 import com.example.autocommunity.model.User;
@@ -9,6 +10,7 @@ import com.example.autocommunity.model.UserDetails;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -45,6 +47,7 @@ public interface ApiService {
     @GET("/users/assets/{username}")
     Call<List<Asset>> getAssetsByUsername(@Path("username") String username);
 
-    
+    @GET("/users/posts")
+    Call<ArrayList<Post>> getAllPosts();
 
 }

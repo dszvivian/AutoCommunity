@@ -2,6 +2,7 @@ package com.example.autocommunity.adapters;
 
 import static com.example.autocommunity.R.id;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,18 +12,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.autocommunity.R;
 import com.example.autocommunity.model.HomePageItemsModel;
+import com.example.autocommunity.model.Post;
 
 import java.util.List;
+
+import retrofit2.http.POST;
 
 public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHolder> {
 
     R r ;
-    private List<HomePageItemsModel> list;
+    private List<Post> list;
+    private Context context;
 
-    public HomePageAdapter(List<HomePageItemsModel> list){
+    public HomePageAdapter(Context context, List<Post> list){
         this.list = list;
+        this.context = context;
     }
 
 
@@ -35,10 +42,19 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        HomePageItemsModel item = list.get(position);
-        holder.post.setImageResource(item.getPostImage());
-        holder.profileIcon.setImageResource(item.getProfileImage());
-        holder.username.setText(item.getUsername());
+        Post item = list.get(position);
+
+        Glide
+            .with(context)
+            .load(item.getPostImage())
+            .centerCrop()
+            .into(holder.post);
+
+
+
+        //todo:Fix it --> Get it from Database
+        holder.profileIcon.setImageResource(R.drawable.profile1);
+        holder.username.setText("dszvivian");
     }
 
     @Override
