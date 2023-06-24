@@ -10,6 +10,7 @@ import com.example.autocommunity.model.Asset;
 import com.example.autocommunity.model.ProfileDetails;
 import com.example.autocommunity.model.Results;
 import com.example.autocommunity.model.User;
+import com.example.autocommunity.model.UserDetails;
 
 import org.json.JSONObject;
 
@@ -21,6 +22,8 @@ public class ApiViewModel extends ViewModel {
     private androidx.lifecycle.MutableLiveData<Results> myData;
     private androidx.lifecycle.MutableLiveData<Boolean> isUserAdded;
     private androidx.lifecycle.MutableLiveData<List<User>> getUser;
+
+    private androidx.lifecycle.MutableLiveData<List<UserDetails>> getAllUser;
 
     private androidx.lifecycle.MutableLiveData<List<ProfileDetails>> getProfileDetails;
 
@@ -85,6 +88,15 @@ public class ApiViewModel extends ViewModel {
 
         return getAssetsByUsername;
     }
+
+
+    public MutableLiveData<List<UserDetails>> getAllUsers(){
+        if(getAllUser==null){
+            getAllUser = repo.getAllUsers();
+        }
+        return getAllUser;
+    }
+
 
 
 

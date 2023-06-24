@@ -5,6 +5,7 @@ import com.example.autocommunity.model.ProfileDetails;
 import com.example.autocommunity.model.Results;
 import com.example.autocommunity.model.User;
 import com.example.autocommunity.model.UserAssetsItemModel;
+import com.example.autocommunity.model.UserDetails;
 
 import org.json.JSONObject;
 
@@ -26,6 +27,9 @@ public interface ApiService {
     @POST("/users")
     Call<User> addNewUser(@Body User user);
 
+    @GET("/users")
+    Call<List<UserDetails>> getALlUsers();
+
     @GET("/users/{username}")
     Call<List<User>> getUser(@Path("username") String username);
 
@@ -41,6 +45,6 @@ public interface ApiService {
     @GET("/users/assets/{username}")
     Call<List<Asset>> getAssetsByUsername(@Path("username") String username);
 
-
+    
 
 }

@@ -1,5 +1,6 @@
 package com.example.autocommunity.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,17 +10,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.autocommunity.R;
+import com.example.autocommunity.model.Asset;
 import com.example.autocommunity.model.UserAssetsItemModel;
 
 import java.util.List;
 
 public class ProfileAssetsAdapter extends RecyclerView.Adapter<ProfileAssetsAdapter.ViewHolder> {
 
-    private List<UserAssetsItemModel> list;
+    private List<Asset> list;
 
-    public ProfileAssetsAdapter(List<UserAssetsItemModel> list) {
+    Context context;
+
+    public ProfileAssetsAdapter(Context context, List<Asset> list) {
         this.list = list;
+        this.context = context;
     }
 
     @NonNull
@@ -31,8 +37,17 @@ public class ProfileAssetsAdapter extends RecyclerView.Adapter<ProfileAssetsAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        UserAssetsItemModel item = list.get(position);
-        holder.assetImage.setImageResource(item.getAssetImage());
+        Asset item = list.get(position);
+
+//        holder.assetImage.setImageResource(R.drawable.kawasaki_ninja_h2_10);
+
+        Glide
+            .with(context)
+            .load(item.getAssetImage())
+            .centerCrop()
+            .into(holder.assetImage);
+
+
         holder.assetName.setText(item.getAssetName());
     }
 

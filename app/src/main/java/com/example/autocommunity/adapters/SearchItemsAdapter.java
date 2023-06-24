@@ -1,6 +1,7 @@
 package com.example.autocommunity.adapters;
 
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +11,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.autocommunity.R;
 import com.example.autocommunity.model.SearchPageItemModel;
+import com.example.autocommunity.model.UserDetails;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchItemsAdapter extends RecyclerView.Adapter<SearchItemsAdapter.ViewHolder> {
 
-    private ArrayList<SearchPageItemModel> list;
+    private List<UserDetails> list;
+    Context context;
 
-    public SearchItemsAdapter(ArrayList<SearchPageItemModel> list){
+    public SearchItemsAdapter(Context context, List<UserDetails> list){
+        this.context = context;
         this.list = list;
     }
 
@@ -33,11 +39,20 @@ public class SearchItemsAdapter extends RecyclerView.Adapter<SearchItemsAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull SearchItemsAdapter.ViewHolder holder, int position) {
-        SearchPageItemModel item = list.get(position);
-        holder.profileIcon.setImageResource(item.getProfileId());
+        UserDetails item = list.get(position);
+
+        // Glide
+
+        Glide
+            .with(context)
+            .load(item.getpPicture())
+            .centerCrop()
+            .into(holder.profileIcon);
+
+
         holder.username.setText(item.getUsername());
-        holder.location.setText(item.getLocation());
-        holder.desc.setText(item.getDescription());
+        holder.location.setText("Manglore,India");
+        holder.desc.setText(item.getpName() +"|" + item.getpDesc());
 
     }
 

@@ -14,6 +14,7 @@ import com.example.autocommunity.model.ProfileDetails;
 import com.example.autocommunity.model.Results;
 import com.example.autocommunity.model.User;
 import com.example.autocommunity.model.UserAssetsItemModel;
+import com.example.autocommunity.model.UserDetails;
 
 import org.json.JSONObject;
 
@@ -168,6 +169,25 @@ public class ApiRepo {
         });
 
         return assets;
+    }
+
+
+    public MutableLiveData<List<UserDetails>> getAllUsers(){
+        MutableLiveData<List<UserDetails>> allUsers = new MutableLiveData<>();
+
+        api.getALlUsers().enqueue(new Callback<List<UserDetails>>() {
+            @Override
+            public void onResponse(Call<List<UserDetails>> call, Response<List<UserDetails>> response) {
+                allUsers.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<UserDetails>> call, Throwable t) {
+                Log.e(ERROR,t.getMessage());
+            }
+        });
+
+        return allUsers;
     }
 
 
