@@ -50,7 +50,7 @@ public interface ApiService {
     @GET("/posts")
     Call<ArrayList<Post>> getAllPosts();
 
-    @POST("/post/{username}")
+    @POST("/posts/{username}")
     Call<Post> addNewPost(@Path("username")String username,@Body Post post);
 
 }

@@ -54,12 +54,27 @@ public class EventsFragment extends Fragment {
 
         vp_eventsInfo = view.findViewById(R.id.vp_eventsInfo);
 
-//        SupportMapFragment mapFragment = (SupportMapFragment) requireActivity().getSupportFragmentManager().findFragmentById(R.id.map);
-//
-//
-//        if (mapFragment != null) {
-//            mapFragment.getMapAsync(callback);
-//        }
+        SupportMapFragment supportMapFragment=(SupportMapFragment)
+                getChildFragmentManager().findFragmentById(R.id.map);
+
+
+        ArrayList<LatLng> locationList = new ArrayList<>();
+        locationList.add(new LatLng(76.1320D,76.1320D));
+        locationList.add(new LatLng(10.0889D,77.0595D));
+        locationList.add(new LatLng(13.1413D,75.2537D));
+
+        // Async map
+        supportMapFragment.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                // When map is loaded
+                for(int i=0;i<=locationList.size();i++){
+                    googleMap.addMarker(new MarkerOptions().position(locationList.get(i)).title("Place"+i));
+                    googleMap.animateCamera(CameraUpdateFactory.zoomTo(15.0f));
+                    googleMap.moveCamera(CameraUpdateFactory.newLatLng(locationList.get(i)));
+                }
+            }
+        });
 
 
         ArrayList<EventInfoModel> list = new ArrayList<>();

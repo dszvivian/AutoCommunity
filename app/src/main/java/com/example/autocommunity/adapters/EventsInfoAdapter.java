@@ -1,7 +1,9 @@
 package com.example.autocommunity.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import androidx.fragment.app.FragmentContainerView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.autocommunity.R;
+import com.example.autocommunity.activities.ExtraActivity;
 import com.example.autocommunity.model.EventInfoModel;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -52,7 +55,11 @@ public class EventsInfoAdapter extends RecyclerView.Adapter<EventsInfoAdapter.Vi
         holder.eventInfoLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //todo: Direct it to Events Confirm Page
+                Intent iExtraActivity =  new Intent(context, ExtraActivity.class);
+                Bundle bd = new Bundle();
+                bd.putString("fname","ECPF");
+                iExtraActivity.putExtras(bd);
+                context.startActivity(iExtraActivity);
             }
         });
 
