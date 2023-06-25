@@ -22,6 +22,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.bumptech.glide.Glide;
 import com.example.autocommunity.ApiViewModel;
+import com.example.autocommunity.Preferences;
 import com.example.autocommunity.activities.ExtraActivity;
 import com.example.autocommunity.R;
 import com.example.autocommunity.adapters.ProfileAssetsAdapter;
@@ -47,6 +48,7 @@ public class ProfileFragment extends Fragment {
     CircleImageView pPic;
     TextView pName,pDesc;
     MaterialToolbar tb;
+    Preferences pf;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -65,6 +67,10 @@ public class ProfileFragment extends Fragment {
         pDesc = view.findViewById(R.id.tv_PFpDesc);
         tb = view.findViewById(R.id.tb_PF);
 
+        pf = new Preferences();
+
+        String username = pf.isLoggedIn(requireActivity());
+
         // setting the Profile Details
         ApiViewModel vm = new ApiViewModel();
 
@@ -72,7 +78,7 @@ public class ProfileFragment extends Fragment {
         Bundle bd = new Bundle();
 
         //todo: Pass the username parameter from sharedPreferences
-        vm.getProfileDetails("dszvivian").observe(requireActivity(), new Observer<List<ProfileDetails>>() {
+        vm.getProfileDetails(username).observe(requireActivity(), new Observer<List<ProfileDetails>>() {
             @Override
             public void onChanged(List<ProfileDetails> pd) {
                 Glide

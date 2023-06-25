@@ -47,7 +47,10 @@ public interface ApiService {
     @GET("/users/assets/{username}")
     Call<List<Asset>> getAssetsByUsername(@Path("username") String username);
 
-    @GET("/users/posts")
+    @GET("/posts")
     Call<ArrayList<Post>> getAllPosts();
+
+    @POST("/post/{username}")
+    Call<Post> addNewPost(@Path("username")String username,@Body Post post);
 
 }

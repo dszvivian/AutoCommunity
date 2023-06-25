@@ -1,50 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
-    android:padding="10dp">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/btmnav_round"
+    android:layout_margin="10dp"
+    android:padding="20dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/ivSearchProfileimage"
-        android:layout_width="100dp"
-        android:layout_height="108dp"
-        android:padding="10dp"
-        android:src="@drawable/profile1"
-        app:civ_border_color="#FF000000"
-        app:civ_border_width="2dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvSearchUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="roshan_photography___"
-        app:layout_constraintStart_toEndOf="@+id/ivSearchProfileimage"
-        app:layout_constraintTop_toTopOf="parent" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivSearchProfileimage"
+            android:layout_width="100dp"
+            android:layout_height="108dp"
+            android:src="@drawable/profile1"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvSearchlocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Manglore India"
-        app:layout_constraintBottom_toBottomOf="@+id/ivSearchProfileimage"
-        app:layout_constraintStart_toStartOf="@+id/tvSearchUsername"
-        app:layout_constraintTop_toBottomOf="@+id/tvSearchUsername" />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/btnSearchdm"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:padding="10dp"
-        android:src="@drawable/baseline_chat_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            >
+
+            <TextView
+                android:id="@+id/tvSearchUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="roshan_photography___"
+                app:layout_constraintStart_toEndOf="@+id/ivSearchProfileimage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvSearchlocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Manglore India"
+                android:paddingStart="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/ivSearchProfileimage"
+                app:layout_constraintStart_toStartOf="@+id/tvSearchUsername"
+                app:layout_constraintTop_toBottomOf="@+id/tvSearchUsername" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/btnSearchdm"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="10dp"
+            android:src="@drawable/baseline_chat_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
 
     <TextView
         android:id="@+id/tvSearchDescription"
@@ -58,4 +89,4 @@
         app:layout_constraintTop_toBottomOf="@+id/ivSearchProfileimage" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

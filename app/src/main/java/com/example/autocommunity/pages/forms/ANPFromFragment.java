@@ -1,7 +1,5 @@
 package com.example.autocommunity.pages.forms;
 
-//Form Fragment to add new Vehicle
-
 import static android.app.Activity.RESULT_OK;
 
 import android.app.ProgressDialog;
@@ -25,7 +23,7 @@ import androidx.lifecycle.Observer;
 import com.example.autocommunity.ApiViewModel;
 import com.example.autocommunity.Preferences;
 import com.example.autocommunity.R;
-import com.example.autocommunity.model.Asset;
+import com.example.autocommunity.model.Post;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -35,13 +33,14 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.UUID;
 
-public class ANVFormFragment extends Fragment {
+public class ANPFromFragment extends Fragment {
+
 
     Button btnSave, btnChooseImage, btnUploadImage;
     ImageButton btnCancel;
-    EditText etModelName;
+    EditText etCaptions;
 
-    final int IMAGE_REQ_CODE = 24;
+    final int IMAGE_REQ_CODE = 28;
 
     Uri uri;
 
@@ -51,29 +50,32 @@ public class ANVFormFragment extends Fragment {
 
     Preferences pf;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.anvform_fragment, container, false);
+        return inflater.inflate(R.layout.anpform_fragment,container,false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btnSave = view.findViewById(R.id.btn_ANVFSave);
-        btnChooseImage = view.findViewById(R.id.btn_ANVFChooseImage);
-        btnUploadImage = view.findViewById(R.id.btn_ANVFUploadImage);
-        etModelName = view.findViewById(R.id.et_ANVFvname);
-        btnCancel = view.findViewById(R.id.iv_ANVFcancel);
+        btnSave = view.findViewById(R.id.btn_ANPFSave);
+        btnChooseImage = view.findViewById(R.id.btn_ANPFChooseImage);
+        btnUploadImage = view.findViewById(R.id.btn_ANPFUploadImage);
+        etCaptions = view.findViewById(R.id.et_ANPFcaptions);
+        btnCancel = view.findViewById(R.id.iv_ANPFcancel);
 
-        storage = FirebaseStorage.getInstance();
-        storageRef = storage.getReference();
 
         pf = new Preferences();
 
         String username = pf.isLoggedIn(requireActivity());
 
+
+
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,39 +91,6 @@ public class ANVFormFragment extends Fragment {
             }
         });
 
-
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String assetName = etModelName.getText().toString();
-
-                ApiViewModel vm = new ApiViewModel();
-
-                Asset asset = new Asset(assetName, uploadedImageUrl);
-
-                if (!(assetName.isEmpty())) {
-                    vm.isAssetAdded(username, asset).observe(requireActivity(), new Observer<Boolean>() {
-                        @Override
-                        public void onChanged(Boolean aBoolean) {
-
-                            if (aBoolean) {
-                                Toast.makeText(requireActivity(), "New Asset Updated", Toast.LENGTH_SHORT).show();
-                                requireActivity().onBackPressed();
-                            } else {
-                                Toast.makeText(requireActivity(), "Failed to Add AssetData", Toast.LENGTH_SHORT).show();
-                            }
-
-                        }
-                    });
-                } else {
-                    Toast.makeText(requireActivity(), "Some Fields are Empty", Toast.LENGTH_SHORT).show();
-                }
-
-
-            }
-        });
-
         btnChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,6 +98,32 @@ public class ANVFormFragment extends Fragment {
                 getImage.setAction(Intent.ACTION_GET_CONTENT);
                 getImage.setType("image/*");
                 startActivityForResult(getImage, IMAGE_REQ_CODE);
+            }
+        });
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String captions = etCaptions.getText().toString();
+                ApiViewModel vm = new ApiViewModel();
+
+                if(!captions.isEmpty()){
+                    //get it from shared preferences
+                    vm.addNewPost(username,new Post(uploadedImageUrl)).observe(requireActivity(), new Observer<Boolean>() {
+                        @Override
+                        public void onChanged(Boolean aBoolean) {
+                            if(aBoolean){
+                                Toast.makeText(requireActivity(), "New Post Updated", Toast.LENGTH_SHORT).show();
+                                requireActivity().onBackPressed();
+                            }else{
+                                Toast.makeText(requireActivity(), "Failed to Add AssetData", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }else{
+                    Toast.makeText(requireActivity(), "Some Fields are Empty", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -148,7 +143,7 @@ public class ANVFormFragment extends Fragment {
             StorageReference ref
                     = storageRef
                     .child(
-                            "assetImages/"
+                            "postImages/"
                                     + UUID.randomUUID().toString());
 
             // adding listeners on upload
@@ -231,6 +226,5 @@ public class ANVFormFragment extends Fragment {
         }
 
     }
-
 
 }

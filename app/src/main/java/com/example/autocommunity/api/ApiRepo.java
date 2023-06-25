@@ -211,6 +211,27 @@ public class ApiRepo {
     }
 
 
+    public MutableLiveData<Boolean> addNewPost(String username,Post post){
+        MutableLiveData<Boolean> isPostAdded = new MutableLiveData<>();
+
+        api.addNewPost(username, post).enqueue(new Callback<Post>() {
+            @Override
+            public void onResponse(Call<Post> call, Response<Post> response) {
+                isPostAdded.setValue(true);
+            }
+
+            @Override
+            public void onFailure(Call<Post> call, Throwable t) {
+                isPostAdded.setValue(false);
+                Log.e(ERROR,t.getMessage());
+            }
+        });
+
+
+        return isPostAdded;
+    }
+
+
 
 
 }

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.autocommunity.Preferences;
 import com.example.autocommunity.R;
 import com.example.autocommunity.adapters.VOBAdapter;
 import com.example.autocommunity.pages.OnboardingPages.vpobPage1;
@@ -21,6 +22,7 @@ public class OnboardingActivity extends AppCompatActivity {
 
     ViewPager2 vpob;
     Button btnGetStarted;
+    Preferences pf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,14 @@ public class OnboardingActivity extends AppCompatActivity {
 
         vpob = findViewById(R.id.vp_onboarding);
         btnGetStarted = findViewById(R.id.btn_vpobGetStarted);
+
+        pf = new Preferences();
+
+        String username = pf.isLoggedIn(this);
+
+        if(!username.isEmpty()){
+            startActivity(new Intent(this,MainActivity.class));
+        }
 
         ArrayList<Fragment> vpObScreens = new ArrayList<Fragment>();
         vpObScreens.add(new vpobPage1());

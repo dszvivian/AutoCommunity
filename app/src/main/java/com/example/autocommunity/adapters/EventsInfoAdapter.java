@@ -56,26 +56,7 @@ public class EventsInfoAdapter extends RecyclerView.Adapter<EventsInfoAdapter.Vi
             }
         });
 
-        OnMapReadyCallback callback = new OnMapReadyCallback() {
 
-            @Override
-            public void onMapReady(GoogleMap googleMap) {
-                LatLng sydney = new LatLng(item.getLat(), item.getLon());
-                googleMap.addMarker(new MarkerOptions().position(sydney).title(item.getPlaceName()));
-                googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-            }
-        };
-
-        SupportMapFragment mapFragment = (SupportMapFragment) ((AppCompatActivity)context).getSupportFragmentManager().findFragmentById(R.id.map);
-
-
-
-
-
-
-        if (mapFragment != null) {
-            mapFragment.getMapAsync(callback);
-        }
 
     }
 
@@ -96,7 +77,6 @@ public class EventsInfoAdapter extends RecyclerView.Adapter<EventsInfoAdapter.Vi
 
             agenda = itemView.findViewById(R.id.tv_eventsAgenda);
             coverImage = itemView.findViewById(R.id.iv_eventsCoverImage);
-            map = itemView.findViewById(R.id.map);
             eventInfoLayout = itemView.findViewById(R.id.eventInfoSection);
 
 

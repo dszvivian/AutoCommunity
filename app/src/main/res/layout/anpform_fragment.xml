@@ -7,11 +7,11 @@
     android:layout_margin="5dp">
 
     <EditText
-        android:id="@+id/et_ANVFvname"
+        android:id="@+id/et_ANPFcaptions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Enter Vehicle Model"
+        android:hint="Enter Caption"
         android:inputType="text"
         android:minHeight="48dp"
         android:padding="20dp"
@@ -23,31 +23,31 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_ANVFChooseImage"
+        android:id="@+id/btn_ANPFChooseImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:padding="3dp"
         android:text="Choose Image"
-        app:layout_constraintEnd_toStartOf="@+id/btn_ANVFUploadImage"
-        app:layout_constraintStart_toStartOf="@+id/et_ANVFvname"
-        app:layout_constraintTop_toBottomOf="@+id/et_ANVFvname" />
+        app:layout_constraintEnd_toStartOf="@+id/btn_ANPFUploadImage"
+        app:layout_constraintStart_toStartOf="@+id/et_ANPFcaptions"
+        app:layout_constraintTop_toBottomOf="@+id/et_ANPFcaptions" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_ANVFSave"
+        android:id="@+id/btn_ANPFSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@color/purple_700"
         android:text="Save"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/et_ANVFvname"
+        app:layout_constraintEnd_toEndOf="@+id/et_ANPFcaptions"
         app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="@+id/et_ANVFvname"
-        app:layout_constraintTop_toBottomOf="@+id/btn_ANVFChooseImage" />
+        app:layout_constraintStart_toStartOf="@+id/et_ANPFcaptions"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ANPFChooseImage" />
 
     <ImageButton
-        android:id="@+id/iv_ANVFcancel"
+        android:id="@+id/iv_ANPFcancel"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
@@ -61,14 +61,14 @@
         app:srcCompat="@drawable/baseline_cancel_24" />
 
     <Button
-        android:id="@+id/btn_ANVFUploadImage"
+        android:id="@+id/btn_ANPFUploadImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:text="Upload Image"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_ANVFChooseImage"
-        app:layout_constraintEnd_toEndOf="@+id/et_ANVFvname"
-        app:layout_constraintStart_toEndOf="@+id/btn_ANVFChooseImage"
-        app:layout_constraintTop_toTopOf="@+id/btn_ANVFChooseImage" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_ANPFChooseImage"
+        app:layout_constraintEnd_toEndOf="@+id/et_ANPFcaptions"
+        app:layout_constraintStart_toEndOf="@+id/btn_ANPFChooseImage"
+        app:layout_constraintTop_toTopOf="@+id/btn_ANPFChooseImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.autocommunity.ApiViewModel;
+import com.example.autocommunity.Preferences;
 import com.example.autocommunity.R;
 import com.example.autocommunity.adapters.ProfileAssetsAdapter;
 import com.example.autocommunity.model.Asset;
@@ -25,6 +26,8 @@ import java.util.List;
 public class VPProfileAssets extends Fragment {
 
     RecyclerView rv;
+
+    Preferences pf;
 
     @Nullable
     @Override
@@ -39,11 +42,16 @@ public class VPProfileAssets extends Fragment {
 
         rv = view.findViewById(R.id.rv_userAssetslist);
 
+        pf = new Preferences();
+
+        String username = pf.isLoggedIn(requireActivity());
+
+
         ApiViewModel vm = new ApiViewModel();
 
 
 
-        vm.getAssetsByUsername("dszvivian").observe(requireActivity(), new Observer<List<Asset>>() {
+        vm.getAssetsByUsername(username).observe(requireActivity(), new Observer<List<Asset>>() {
 
 
             @Override

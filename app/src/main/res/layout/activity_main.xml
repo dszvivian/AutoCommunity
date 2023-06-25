@@ -10,7 +10,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:name="com.example.autocommunity.pages.HomeFragment"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bnvMain"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
         android:id="@+id/bnvMain"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@drawable/btmnav_round"
+        android:elevation="10dp"
         app:itemIconTint="@color/black"
         app:itemTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,16 +32,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bnv_items" />
 
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/toolbar"-->
-<!--        android:layout_width="409dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@drawable/round_toolbar"-->
-<!--        android:minHeight="?attr/actionBarSize"-->
-<!--        android:theme="?attr/actionBarTheme"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/fragmentContainerView"-->
-<!--        app:menu="@menu/tb_items" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
