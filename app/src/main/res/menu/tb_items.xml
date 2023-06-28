@@ -6,7 +6,7 @@
 
     <item
         android:id="@+id/homeAddnewpost"
-        android:title="more"
+        android:title="New Post"
         app:showAsAction="never" />
 
 </menu>

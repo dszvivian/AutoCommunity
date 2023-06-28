@@ -68,7 +68,7 @@ public class EventsFragment extends Fragment {
             @Override
             public void onMapReady(GoogleMap googleMap) {
                 // When map is loaded
-                for(int i=0;i<=locationList.size();i++){
+                for(int i=0;i<locationList.size();i++){
                     googleMap.addMarker(new MarkerOptions().position(locationList.get(i)).title("Place"+i));
                     googleMap.animateCamera(CameraUpdateFactory.zoomTo(15.0f));
                     googleMap.moveCamera(CameraUpdateFactory.newLatLng(locationList.get(i)));
