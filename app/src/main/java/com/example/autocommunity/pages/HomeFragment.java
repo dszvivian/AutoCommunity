@@ -61,7 +61,15 @@ public class HomeFragment extends Fragment {
             public void onChanged(ArrayList<Post> posts) {
 
                 Toast.makeText(requireActivity(),"Posts Recieved",Toast.LENGTH_SHORT).show();
-                HomePageAdapter adapter = new HomePageAdapter(requireActivity(),posts);
+
+                ArrayList<Post> reversePost = new ArrayList<>();
+
+                for(int i=posts.size()-1;i>=0;i--){
+                    reversePost.add(posts.get(i));
+                }
+
+
+                HomePageAdapter adapter = new HomePageAdapter(requireActivity(),reversePost);
                 rv.setAdapter(adapter);
                 rv.setLayoutManager(new LinearLayoutManager(getActivity()));
             }
@@ -86,11 +94,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
-
-
     }
-
-
 
 }

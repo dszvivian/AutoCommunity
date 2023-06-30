@@ -35,6 +35,7 @@ public class ApiViewModel extends ViewModel {
 
     private androidx.lifecycle.MutableLiveData<List<Asset>> getAssetsByUsername;
     private androidx.lifecycle.MutableLiveData<ArrayList<Post>> getAllPosts;
+    private androidx.lifecycle.MutableLiveData<ArrayList<Post>> getAllPostsByUsername;
 
     private  androidx.lifecycle.MutableLiveData<Boolean> addNewPost;
 
@@ -114,6 +115,13 @@ public class ApiViewModel extends ViewModel {
             addNewPost = repo.addNewPost(username, post);
         }
         return addNewPost;
+    }
+
+    public MutableLiveData<ArrayList<Post>> getAllPostsByUsername(String username){
+        if(getAllPostsByUsername==null){
+            getAllPostsByUsername = repo.getAllPostsByUsername(username);
+        }
+        return getAllPostsByUsername;
     }
 
 

@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.arch.core.executor.TaskExecutor;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewTreeLifecycleOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
@@ -99,7 +100,7 @@ public class ProfileFragment extends Fragment {
         tabsName.add("Events");
 
 
-        VPProfileAdapter vpProfileAdapter = new VPProfileAdapter(getChildFragmentManager(), getLifecycle());
+        VPProfileAdapter vpProfileAdapter = new VPProfileAdapter(getChildFragmentManager(), getViewLifecycleOwner().getLifecycle());
         vpProfile.setAdapter(vpProfileAdapter);
 
         new TabLayoutMediator(tb_profile, vpProfile,

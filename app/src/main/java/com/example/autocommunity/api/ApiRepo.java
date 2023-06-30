@@ -232,6 +232,27 @@ public class ApiRepo {
     }
 
 
+    public MutableLiveData<ArrayList<Post>> getAllPostsByUsername(String username){
+        MutableLiveData<ArrayList<Post>> posts = new MutableLiveData<ArrayList<Post>>();
+
+        api.getAllPostsByUsername(username).enqueue(new Callback<ArrayList<Post>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Post>> call, Response<ArrayList<Post>> response) {
+                posts.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Post>> call, Throwable t) {
+                Log.e(ERROR,t.getMessage());
+            }
+        });
+
+
+
+        return posts;
+    }
+
+
 
 
 }

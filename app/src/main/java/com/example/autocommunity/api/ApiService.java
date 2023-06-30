@@ -53,4 +53,10 @@ public interface ApiService {
     @POST("/posts/{username}")
     Call<Post> addNewPost(@Path("username")String username,@Body Post post);
 
+    @GET("/posts/{username}")
+    Call<ArrayList<Post>> getAllPostsByUsername(@Path("username")String username);
+
+
+
+
 }

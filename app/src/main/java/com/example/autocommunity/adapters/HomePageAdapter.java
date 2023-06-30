@@ -3,13 +3,18 @@ package com.example.autocommunity.adapters;
 import static com.example.autocommunity.R.id;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -55,6 +60,20 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHo
         //todo:Fix it --> Get it from Database
         holder.profileIcon.setImageResource(R.drawable.profile1);
         holder.username.setText("dszvivian");
+
+        holder.ibLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(holder.ibLike.isChecked()){
+                    holder.ibLike.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_heart_svgrepo_com) );
+                }
+                else{
+                    holder.ibLike.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.heart_svgrepo_com2) );
+                }
+            }
+        });
+
+
     }
 
     @Override
@@ -67,12 +86,15 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHo
         ImageView post,profileIcon;
         TextView username;
 
+        ToggleButton ibLike;
+
         public ViewHolder(View itemView) {
             super(itemView);
 
             post = itemView.findViewById(id.ivHomePost);
             profileIcon = itemView.findViewById(id.ivHomeProfile);
             username = itemView.findViewById(id.tvHomeUsername);
+            ibLike = itemView.findViewById(id.ibHomeLike);
 
         }
     }

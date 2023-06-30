@@ -52,18 +52,19 @@
             app:layout_constraintStart_toEndOf="@+id/ivHomeProfile"
             app:layout_constraintTop_toTopOf="@+id/ivHomeProfile" />
 
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_margin="5dp"
-            android:padding="5dp"
-            android:scaleType="centerCrop"
-            android:background="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/ivHomePost"
-            app:layout_constraintTop_toBottomOf="@+id/ivHomePost"
-            app:srcCompat="@drawable/heart"
-            android:contentDescription="TODO" />
+        <ToggleButton
+            android:id="@+id/ibHomeLike"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:minHeight="48dp"
+            android:minWidth="48dp"
+            android:textOn=""
+            android:textOff=""
+            android:background="@drawable/heart_svgrepo_com2"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            app:tint="@color/white" />
+
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

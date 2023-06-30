@@ -22,16 +22,20 @@ public class VPProfileAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         switch (position){
-            case 0: new VPProfileAssets();
-            case 1: new VPProfilePosts();
-            case 2: new VPProfileEvents();
+            case 0: return new VPProfileAssets();
+            case 1: return new VPProfilePosts();
+            case 2: return new VPProfileEvents();
         }
 
-        return new VPProfileAssets();
+        return null;
     }
 
     @Override
     public int getItemCount() {
         return TABS;
     }
+
+
+
+
 }
