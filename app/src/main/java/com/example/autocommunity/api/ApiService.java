@@ -1,6 +1,7 @@
 package com.example.autocommunity.api;
 
 import com.example.autocommunity.model.Asset;
+import com.example.autocommunity.model.CompletePostModel;
 import com.example.autocommunity.model.Post;
 import com.example.autocommunity.model.ProfileDetails;
 import com.example.autocommunity.model.Results;
@@ -48,7 +49,7 @@ public interface ApiService {
     Call<List<Asset>> getAssetsByUsername(@Path("username") String username);
 
     @GET("/posts")
-    Call<ArrayList<Post>> getAllPosts();
+    Call<ArrayList<CompletePostModel>> getAllPosts();
 
     @POST("/posts/{username}")
     Call<Post> addNewPost(@Path("username")String username,@Body Post post);

@@ -21,6 +21,7 @@ import com.example.autocommunity.ApiViewModel;
 import com.example.autocommunity.R;
 import com.example.autocommunity.activities.ExtraActivity;
 import com.example.autocommunity.adapters.HomePageAdapter;
+import com.example.autocommunity.model.CompletePostModel;
 import com.example.autocommunity.model.HomePageItemsModel;
 import com.example.autocommunity.model.Post;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -56,20 +57,20 @@ public class HomeFragment extends Fragment {
 
         ApiViewModel vm =new ApiViewModel();
 
-        vm.getAllPosts().observe(requireActivity(), new Observer<ArrayList<Post>>() {
+        vm.getAllPosts().observe(requireActivity(), new Observer<ArrayList<CompletePostModel>>() {
             @Override
-            public void onChanged(ArrayList<Post> posts) {
+            public void onChanged(ArrayList<CompletePostModel> posts) {
 
                 Toast.makeText(requireActivity(),"Posts Recieved",Toast.LENGTH_SHORT).show();
 
-                ArrayList<Post> reversePost = new ArrayList<>();
+                ArrayList<CompletePostModel> reversePost = new ArrayList<>();
 
                 for(int i=posts.size()-1;i>=0;i--){
                     reversePost.add(posts.get(i));
                 }
 
 
-                HomePageAdapter adapter = new HomePageAdapter(requireActivity(),reversePost);
+                HomePageAdapter adapter = new HomePageAdapter(requireActivity(),requireActivity(),reversePost);
                 rv.setAdapter(adapter);
                 rv.setLayoutManager(new LinearLayoutManager(getActivity()));
             }

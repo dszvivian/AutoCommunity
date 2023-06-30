@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.autocommunity.api.ApiRepo;
 import com.example.autocommunity.model.Asset;
+import com.example.autocommunity.model.CompletePostModel;
 import com.example.autocommunity.model.Post;
 import com.example.autocommunity.model.ProfileDetails;
 import com.example.autocommunity.model.Results;
@@ -34,7 +35,7 @@ public class ApiViewModel extends ViewModel {
     private  androidx.lifecycle.MutableLiveData<Boolean> isAssetAdded;
 
     private androidx.lifecycle.MutableLiveData<List<Asset>> getAssetsByUsername;
-    private androidx.lifecycle.MutableLiveData<ArrayList<Post>> getAllPosts;
+    private androidx.lifecycle.MutableLiveData<ArrayList<CompletePostModel>> getAllPosts;
     private androidx.lifecycle.MutableLiveData<ArrayList<Post>> getAllPostsByUsername;
 
     private  androidx.lifecycle.MutableLiveData<Boolean> addNewPost;
@@ -103,7 +104,7 @@ public class ApiViewModel extends ViewModel {
         return getAllUser;
     }
 
-    public MutableLiveData<ArrayList<Post>> getAllPosts(){
+    public MutableLiveData<ArrayList<CompletePostModel>> getAllPosts(){
         if (getAllPosts == null) {
             getAllPosts = repo.getAllPosts();
         }

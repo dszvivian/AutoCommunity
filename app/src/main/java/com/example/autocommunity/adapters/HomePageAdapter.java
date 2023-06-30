@@ -15,12 +15,17 @@ import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.autocommunity.ApiViewModel;
 import com.example.autocommunity.R;
+import com.example.autocommunity.model.CompletePostModel;
 import com.example.autocommunity.model.HomePageItemsModel;
 import com.example.autocommunity.model.Post;
+import com.example.autocommunity.model.ProfileDetails;
 
 import java.util.List;
 
@@ -29,11 +34,13 @@ import retrofit2.http.POST;
 public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHolder> {
 
     R r ;
-    private List<Post> list;
+    private List<CompletePostModel> list;
+    LifecycleOwner lcOwner;
     private Context context;
 
-    public HomePageAdapter(Context context, List<Post> list){
+    public HomePageAdapter(Context context,LifecycleOwner lcOwner, List<CompletePostModel> list){
         this.list = list;
+        this.lcOwner = lcOwner;
         this.context = context;
     }
 
@@ -42,12 +49,13 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(com.example.autocommunity.R.layout.item_homepage,parent,false);
+
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Post item = list.get(position);
+        CompletePostModel item = list.get(position);
 
         Glide
             .with(context)
@@ -59,7 +67,19 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHo
 
         //todo:Fix it --> Get it from Database
         holder.profileIcon.setImageResource(R.drawable.profile1);
-        holder.username.setText("dszvivian");
+        holder.username.setText(item.getUsername());
+
+        ApiViewModel vm = new ApiViewModel();
+        vm.getProfileDetails(item.getUsername()).observe(lcOwner, new Observer<List<ProfileDetails>>() {
+            @Override
+            public void onChanged(List<ProfileDetails> profileDetails) {
+                Glide
+                        .with(context)
+                        .load(profileDetails.get(0).getpPicture())
+                        .centerCrop()
+                        .into(holder.profileIcon);
+            }
+        });
 
         holder.ibLike.setOnClickListener(new View.OnClickListener() {
             @Override

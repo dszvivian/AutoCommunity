@@ -28,16 +28,13 @@
         android:layout_height="wrap_content"
         >
 
-        <ImageButton
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivHomeProfile"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:contentDescription="TODO"
             android:padding="5dp"
-            android:scaleType="fitCenter"
-            app:layout_constraintStart_toStartOf="@+id/ivHomePost"
-            app:layout_constraintTop_toBottomOf="@+id/ivHomePost"
-            app:srcCompat="@drawable/profile1" />
+            android:src="@drawable/profile1" />
 
 
         <TextView

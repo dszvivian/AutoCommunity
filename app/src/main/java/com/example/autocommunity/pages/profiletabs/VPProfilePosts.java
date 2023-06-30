@@ -17,6 +17,7 @@ import com.example.autocommunity.ApiViewModel;
 import com.example.autocommunity.Preferences;
 import com.example.autocommunity.R;
 import com.example.autocommunity.adapters.HomePageAdapter;
+import com.example.autocommunity.adapters.VPProfilePostAdapter;
 import com.example.autocommunity.model.Post;
 
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ public class VPProfilePosts extends Fragment {
             @Override
             public void onChanged(ArrayList<Post> posts) {
                 Toast.makeText(requireActivity(),"Posts Recieved",Toast.LENGTH_SHORT).show();
-                HomePageAdapter adapter = new HomePageAdapter(requireActivity(),posts);
+                VPProfilePostAdapter adapter = new VPProfilePostAdapter(requireActivity(),posts);
                 rvPosts.setAdapter(adapter);
                 rvPosts.setLayoutManager(new LinearLayoutManager(getActivity()));
             }

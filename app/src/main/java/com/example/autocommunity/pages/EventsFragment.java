@@ -78,9 +78,9 @@ public class EventsFragment extends Fragment {
 
 
         ArrayList<EventInfoModel> list = new ArrayList<>();
-        list.add(new EventInfoModel(76.1320D,76.1320D,"Wayanad","Cars and Cofeee",R.drawable.bike1));
-        list.add(new EventInfoModel(10.0889D,77.0595D,"Munnar","Dirt Rides",R.drawable.bike1));
-        list.add(new EventInfoModel(13.1413D,75.2537D,"Kudremukh","Experience the Heights",R.drawable.bike1));
+        list.add(new EventInfoModel(76.1320D,76.1320D,"Wayanad","Cars and Cofeee",R.drawable._1));
+        list.add(new EventInfoModel(10.0889D,77.0595D,"Munnar","Dirt Rides",R.drawable._12));
+        list.add(new EventInfoModel(13.1413D,75.2537D,"Kudremukh","Experience the Heights",R.drawable._13));
 
         EventsInfoAdapter adapter = new EventsInfoAdapter(getActivity(),list);
 
