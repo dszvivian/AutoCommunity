@@ -12,7 +12,7 @@ import com.example.autocommunity.pages.profiletabs.VPProfilePosts;
 
 public class VPProfileAdapter extends FragmentStateAdapter {
 
-    private final int TABS = 3;
+    private final int TABS = 2;  
 
     public VPProfileAdapter(FragmentManager fragmentManager, Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
@@ -24,7 +24,7 @@ public class VPProfileAdapter extends FragmentStateAdapter {
         switch (position){
             case 0: return new VPProfileAssets();
             case 1: return new VPProfilePosts();
-            case 2: return new VPProfileEvents();
+//            case 2: return new VPProfileEvents();
         }
 
         return null;

@@ -20,5 +20,11 @@ public class Preferences {
         return sp.getString(USERNAME,"");
     }
 
+    public void clearData(Context context){
+        SharedPreferences sp = context.getSharedPreferences(SP,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.clear().commit();
+    }
+
 
 }

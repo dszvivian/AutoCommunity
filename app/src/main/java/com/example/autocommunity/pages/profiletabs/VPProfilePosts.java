@@ -49,7 +49,7 @@ public class VPProfilePosts extends Fragment {
             @Override
             public void onChanged(ArrayList<Post> posts) {
                 Toast.makeText(requireActivity(),"Posts Recieved",Toast.LENGTH_SHORT).show();
-                VPProfilePostAdapter adapter = new VPProfilePostAdapter(requireActivity(),posts);
+                VPProfilePostAdapter adapter = new VPProfilePostAdapter(requireActivity(),requireActivity(),posts);
                 rvPosts.setAdapter(adapter);
                 rvPosts.setLayoutManager(new LinearLayoutManager(getActivity()));
             }

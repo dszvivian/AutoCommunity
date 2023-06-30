@@ -70,7 +70,7 @@
         android:id="@+id/tvHomeDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Roshan Girish | Photography Photographer Based in India 🇮🇳"
+        android:text=""
         app:layout_constraintTop_toBottomOf="@+id/ivSearchProfileimage" />
 
 

@@ -6,7 +6,7 @@ public class EventInfoModel {
     private double lon;
     private String placeName;
     private String agenda;
-    private int coverImage;
+    private String coverImage;
 
 
     public double getLat() {
@@ -41,15 +41,15 @@ public class EventInfoModel {
         this.agenda = agenda;
     }
 
-    public int getCoverImage() {
+    public String getCoverImage() {
         return coverImage;
     }
 
-    public void setCoverImage(int coverImage) {
+    public void setCoverImage(String coverImage) {
         this.coverImage = coverImage;
     }
 
-    public EventInfoModel(double lat, double lon, String placeName, String agenda,int coverImage) {
+    public EventInfoModel(double lat, double lon, String placeName, String agenda,String coverImage) {
         this.lat = lat;
         this.lon = lon;
         this.placeName = placeName;

@@ -16,6 +16,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.autocommunity.R;
 import com.example.autocommunity.activities.ExtraActivity;
 import com.example.autocommunity.model.EventInfoModel;
@@ -43,6 +44,8 @@ public class EventsInfoAdapter extends RecyclerView.Adapter<EventsInfoAdapter.Vi
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.eventsitem,parent,false);
         return new ViewHolder(view);
+
+
     }
 
     @Override
@@ -50,7 +53,12 @@ public class EventsInfoAdapter extends RecyclerView.Adapter<EventsInfoAdapter.Vi
         EventInfoModel item = list.get(position);
 
         holder.agenda.setText(item.getAgenda() + " | " + item.getPlaceName());
-        holder.coverImage.setImageResource(item.getCoverImage());
+
+        Glide
+                .with(context)
+                .load(item.getCoverImage())
+                .centerCrop()
+                .into(holder.coverImage);
 
         holder.eventInfoLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +66,9 @@ public class EventsInfoAdapter extends RecyclerView.Adapter<EventsInfoAdapter.Vi
                 Intent iExtraActivity =  new Intent(context, ExtraActivity.class);
                 Bundle bd = new Bundle();
                 bd.putString("fname","ECPF");
+                bd.putString("coverImage",item.getCoverImage());
+                bd.putString("title",item.getAgenda());
+                bd.putString("place",item.getPlaceName());
                 iExtraActivity.putExtras(bd);
                 context.startActivity(iExtraActivity);
             }

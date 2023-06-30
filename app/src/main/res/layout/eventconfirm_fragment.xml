@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ivECFCoverimage"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         app:srcCompat="@drawable/bike1"
@@ -18,7 +18,7 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvECFagenda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cars and Cofeee"
@@ -28,7 +28,7 @@
         android:textStyle="bold"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/ivECFCoverimage" />
 
 
     <TextView
@@ -54,7 +54,7 @@
         android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView">
+        app:layout_constraintTop_toBottomOf="@id/tvECFagenda">
 
 
         <TextView
@@ -106,7 +106,18 @@
             android:text="5 Interested" />
     </LinearLayout>
 
-
+    <TextView
+        android:id="@+id/tvECFPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="Wayanad"
+        android:textColor="@color/transparentBlack"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivECFCoverimage"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
