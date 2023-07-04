@@ -1,5 +1,6 @@
 package com.example.autocommunity.pages;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,9 @@ import androidx.lifecycle.Observer;
 import androidx.navigation.Navigation;
 
 import com.example.autocommunity.ApiViewModel;
+import com.example.autocommunity.Preferences;
 import com.example.autocommunity.R;
+import com.example.autocommunity.activities.MainActivity;
 import com.example.autocommunity.model.User;
 
 public class SignupFragment extends Fragment {
@@ -24,6 +27,7 @@ public class SignupFragment extends Fragment {
     EditText etUsername,etEmail,etPassword;
     AppCompatButton btnSignUp;
     TextView tvNavigateToSinIn;
+    Preferences pf;
 
     @Nullable
     @Override
@@ -40,6 +44,12 @@ public class SignupFragment extends Fragment {
         etEmail = view.findViewById(R.id.etEmailSignUp);
         etPassword = view.findViewById(R.id.etPasswordSignUp);
         tvNavigateToSinIn = view.findViewById(R.id.tvNavigateToSignIn);
+
+        pf = new Preferences();
+        String username = pf.isLoggedIn(requireActivity());
+        if(!username.isEmpty()){
+            startActivity(new Intent(requireActivity(), MainActivity.class));
+        }
 
         tvNavigateToSinIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +75,7 @@ public class SignupFragment extends Fragment {
                         public void onChanged(Boolean isUserAdded) {
                             if(isUserAdded){
                                 Toast.makeText(requireActivity(),"New User Added",Toast.LENGTH_SHORT).show();
+                                pf.saveData(requireActivity(),username);
                                 requireActivity().finish();
                                 Navigation.findNavController(requireActivity(),R.id.fragmentAuth)
                                         .navigate(R.id.action_signupFragment_to_mainActivity);
@@ -76,11 +87,6 @@ public class SignupFragment extends Fragment {
                 }else{
                     Toast.makeText(requireActivity(),"Some Fields are Empty",Toast.LENGTH_SHORT).show();
                 }
-
-
-
-
-
 
             }
         });

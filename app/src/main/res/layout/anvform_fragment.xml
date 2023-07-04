@@ -7,7 +7,7 @@
     android:layout_margin="5dp">
 
     <EditText
-        android:id="@+id/et_ANVFVName"
+        android:id="@+id/et_ANVFvname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -30,8 +30,8 @@
         android:padding="3dp"
         android:text="Choose Image"
         app:layout_constraintEnd_toStartOf="@+id/btn_ANVFUploadImage"
-        app:layout_constraintStart_toStartOf="@+id/et_ANVFVName"
-        app:layout_constraintTop_toBottomOf="@+id/et_ANVFVName" />
+        app:layout_constraintStart_toStartOf="@+id/et_ANVFvname"
+        app:layout_constraintTop_toBottomOf="@+id/et_ANVFvname" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_ANVFSave"
@@ -41,9 +41,9 @@
         android:background="@color/purple_700"
         android:text="Save"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/et_ANVFVName"
+        app:layout_constraintEnd_toEndOf="@+id/et_ANVFvname"
         app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="@+id/et_ANVFVName"
+        app:layout_constraintStart_toStartOf="@+id/et_ANVFvname"
         app:layout_constraintTop_toBottomOf="@+id/btn_ANVFChooseImage" />
 
     <ImageButton
@@ -67,7 +67,7 @@
         android:layout_margin="5dp"
         android:text="Upload Image"
         app:layout_constraintBottom_toBottomOf="@+id/btn_ANVFChooseImage"
-        app:layout_constraintEnd_toEndOf="@+id/et_ANVFVName"
+        app:layout_constraintEnd_toEndOf="@+id/et_ANVFvname"
         app:layout_constraintStart_toEndOf="@+id/btn_ANVFChooseImage"
         app:layout_constraintTop_toTopOf="@+id/btn_ANVFChooseImage" />
 

@@ -10,13 +10,17 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.autocommunity.model.Asset;
+import com.example.autocommunity.model.CompletePostModel;
+import com.example.autocommunity.model.Post;
 import com.example.autocommunity.model.ProfileDetails;
 import com.example.autocommunity.model.Results;
 import com.example.autocommunity.model.User;
 import com.example.autocommunity.model.UserAssetsItemModel;
+import com.example.autocommunity.model.UserDetails;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -133,14 +137,14 @@ public class ApiRepo {
 
         MutableLiveData<Boolean> isAssetAdded = new MutableLiveData<>();
 
-        api.addNewAsset(username, asset).enqueue(new Callback<UserAssetsItemModel>() {
+        api.addNewAsset(username, asset).enqueue(new Callback<Asset>() {
             @Override
-            public void onResponse(Call<UserAssetsItemModel> call, Response<UserAssetsItemModel> response) {
+            public void onResponse(Call<Asset> call, Response<Asset> response) {
                 isAssetAdded.setValue(true);
             }
 
             @Override
-            public void onFailure(Call<UserAssetsItemModel> call, Throwable t) {
+            public void onFailure(Call<Asset> call, Throwable t) {
                 isAssetAdded.setValue(false);
                 Log.e(ERROR,t.getMessage());
             }
@@ -151,6 +155,103 @@ public class ApiRepo {
         return isAssetAdded;
     }
 
+
+    public MutableLiveData<List<Asset>> getAssetsByUsername(String username){
+        MutableLiveData<List<Asset>> assets = new MutableLiveData<>();
+
+        api.getAssetsByUsername(username).enqueue(new Callback<List<Asset>>() {
+            @Override
+            public void onResponse(Call<List<Asset>> call, Response<List<Asset>> response) {
+                assets.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Asset>> call, Throwable t) {
+                Log.e(ERROR,t.getMessage());
+            }
+        });
+
+        return assets;
+    }
+
+
+    public MutableLiveData<List<UserDetails>> getAllUsers(){
+        MutableLiveData<List<UserDetails>> allUsers = new MutableLiveData<>();
+
+        api.getALlUsers().enqueue(new Callback<List<UserDetails>>() {
+            @Override
+            public void onResponse(Call<List<UserDetails>> call, Response<List<UserDetails>> response) {
+                allUsers.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<UserDetails>> call, Throwable t) {
+                Log.e(ERROR,t.getMessage());
+            }
+        });
+
+        return allUsers;
+    }
+
+    public MutableLiveData<ArrayList<CompletePostModel>> getAllPosts(){
+        MutableLiveData<ArrayList<CompletePostModel>> posts = new MutableLiveData<>();
+
+        api.getAllPosts().enqueue(new Callback<ArrayList<CompletePostModel>>() {
+            @Override
+            public void onResponse(Call<ArrayList<CompletePostModel>> call, Response<ArrayList<CompletePostModel>> response) {
+                posts.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<CompletePostModel>> call, Throwable t) {
+                Log.e(ERROR,t.getMessage());
+            }
+        });
+
+        return posts;
+    }
+
+
+    public MutableLiveData<Boolean> addNewPost(String username,Post post){
+        MutableLiveData<Boolean> isPostAdded = new MutableLiveData<>();
+
+        api.addNewPost(username, post).enqueue(new Callback<Post>() {
+            @Override
+            public void onResponse(Call<Post> call, Response<Post> response) {
+                isPostAdded.setValue(true);
+            }
+
+            @Override
+            public void onFailure(Call<Post> call, Throwable t) {
+                isPostAdded.setValue(false);
+                Log.e(ERROR,t.getMessage());
+            }
+        });
+
+
+        return isPostAdded;
+    }
+
+
+    public MutableLiveData<ArrayList<Post>> getAllPostsByUsername(String username){
+        MutableLiveData<ArrayList<Post>> posts = new MutableLiveData<ArrayList<Post>>();
+
+        api.getAllPostsByUsername(username).enqueue(new Callback<ArrayList<Post>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Post>> call, Response<ArrayList<Post>> response) {
+                posts.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Post>> call, Throwable t) {
+                Log.e(ERROR,t.getMessage());
+            }
+        });
+
+
+
+        return posts;
+    }
 
 
 

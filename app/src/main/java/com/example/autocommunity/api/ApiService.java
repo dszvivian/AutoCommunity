@@ -1,13 +1,17 @@
 package com.example.autocommunity.api;
 
 import com.example.autocommunity.model.Asset;
+import com.example.autocommunity.model.CompletePostModel;
+import com.example.autocommunity.model.Post;
 import com.example.autocommunity.model.ProfileDetails;
 import com.example.autocommunity.model.Results;
 import com.example.autocommunity.model.User;
 import com.example.autocommunity.model.UserAssetsItemModel;
+import com.example.autocommunity.model.UserDetails;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -26,6 +30,9 @@ public interface ApiService {
     @POST("/users")
     Call<User> addNewUser(@Body User user);
 
+    @GET("/users")
+    Call<List<UserDetails>> getALlUsers();
+
     @GET("/users/{username}")
     Call<List<User>> getUser(@Path("username") String username);
 
@@ -36,7 +43,21 @@ public interface ApiService {
     Call<List<ProfileDetails>> getUserProfileDetails(@Path("username") String username);
 
     @POST("/users/assets/{username}")
-    Call<UserAssetsItemModel> addNewAsset(@Path("username")String username,@Body Asset asset);
+    Call<Asset> addNewAsset(@Path("username")String username,@Body Asset asset);
+
+    @GET("/users/assets/{username}")
+    Call<List<Asset>> getAssetsByUsername(@Path("username") String username);
+
+    @GET("/posts")
+    Call<ArrayList<CompletePostModel>> getAllPosts();
+
+    @POST("/posts/{username}")
+    Call<Post> addNewPost(@Path("username")String username,@Body Post post);
+
+    @GET("/posts/{username}")
+    Call<ArrayList<Post>> getAllPostsByUsername(@Path("username")String username);
+
+
 
 
 }

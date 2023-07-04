@@ -4,22 +4,30 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.autocommunity.ApiViewModel;
+import com.example.autocommunity.Preferences;
 import com.example.autocommunity.R;
 import com.example.autocommunity.adapters.ProfileAssetsAdapter;
+import com.example.autocommunity.model.Asset;
 import com.example.autocommunity.model.UserAssetsItemModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class VPProfileAssets extends Fragment {
 
     RecyclerView rv;
+
+    Preferences pf;
 
     @Nullable
     @Override
@@ -32,26 +40,49 @@ public class VPProfileAssets extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         rv = view.findViewById(R.id.rv_userAssetslist);
 
-        ArrayList<UserAssetsItemModel> assetsList = new ArrayList<>() ;
-        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
-        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
-        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
-        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
-        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
-        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
-        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
-        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
-        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
-        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
-        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
+        pf = new Preferences();
+
+        String username = pf.isLoggedIn(requireActivity());
 
 
-        ProfileAssetsAdapter adapter = new ProfileAssetsAdapter(assetsList);
-        rv.setAdapter(adapter);
-        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        ApiViewModel vm = new ApiViewModel();
+
+
+
+        vm.getAssetsByUsername(username).observe(requireActivity(), new Observer<List<Asset>>() {
+
+
+            @Override
+            public void onChanged(List<Asset> assets) {
+
+                ArrayList<Asset> list = new ArrayList<>(assets);
+                Toast.makeText(requireActivity(),"Successfully inserted All the Elements ",Toast.LENGTH_SHORT).show();
+                ProfileAssetsAdapter adapter = new ProfileAssetsAdapter(requireActivity(),list);
+                rv.setAdapter(adapter);
+                rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+            }
+        });
+
+
+
+
+//        ArrayList<UserAssetsItemModel> assetsList = new ArrayList<>() ;
+//        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
+//        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
+//        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
+//        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
+//        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
+//        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
+//        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
+//        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
+//        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
+//        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
+//        assetsList.add(new UserAssetsItemModel(R.drawable.kawasaki_ninja_h2_10,"Kawasaki Ninja"));
+
+
+
 
 
     }

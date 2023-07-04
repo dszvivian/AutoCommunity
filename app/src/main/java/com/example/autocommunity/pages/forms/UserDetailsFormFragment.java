@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 
 import com.example.autocommunity.ApiViewModel;
+import com.example.autocommunity.Preferences;
 import com.example.autocommunity.R;
 import com.example.autocommunity.StorageUtils;
 import com.example.autocommunity.model.ProfileDetails;
@@ -50,6 +51,8 @@ public class UserDetailsFormFragment extends Fragment {
 
     StorageUtils storageUtils;
 
+    Preferences pf;
+
 
     @Nullable
     @Override
@@ -67,6 +70,10 @@ public class UserDetailsFormFragment extends Fragment {
         etFName = view.findViewById(R.id.et_UDFFName);
         etDesc = view.findViewById(R.id.et_UDFDescription);
         uploadImage = view.findViewById(R.id.btn_UDFUploadImage);
+
+        pf = new Preferences();
+
+        String username = pf.isLoggedIn(requireActivity());
 
 
         storage = FirebaseStorage.getInstance();
@@ -115,7 +122,7 @@ public class UserDetailsFormFragment extends Fragment {
 
                     ProfileDetails pd = new ProfileDetails(name,uploadedImageUrl,desc);
 
-                    vm.updateProfileData("dszvivian",pd).observe(requireActivity(), new Observer<Boolean>() {
+                    vm.updateProfileData(username,pd).observe(requireActivity(), new Observer<Boolean>() {
                         @Override
                         public void onChanged(Boolean aBoolean) {
 
@@ -187,6 +194,8 @@ public class UserDetailsFormFragment extends Fragment {
                                             Log.d("URL", uri.toString());
                                             // This is the complete uri, you can store it to realtime database
 
+                                            progressDialog.dismiss();
+
                                             Toast.makeText(requireActivity(),
                                                             "Suceessfully Uploaded Image",
                                                             Toast.LENGTH_SHORT)
@@ -233,6 +242,8 @@ public class UserDetailsFormFragment extends Fragment {
                                             "Uploaded "
                                                     + (int)progress + "%");
                                 }
+
+
                             });
 
         }

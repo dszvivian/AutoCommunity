@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.autocommunity.R;
+import com.example.autocommunity.pages.EventConfirmFragment;
 import com.example.autocommunity.pages.ProfileFragment;
+import com.example.autocommunity.pages.forms.ANPFromFragment;
 import com.example.autocommunity.pages.forms.ANVFormFragment;
 import com.example.autocommunity.pages.forms.UserDetailsFormFragment;
 
@@ -24,7 +26,8 @@ public class ExtraActivity extends AppCompatActivity {
 
         UserDetailsFormFragment udf = new UserDetailsFormFragment();
         ANVFormFragment anvf = new ANVFormFragment();
-
+        ANPFromFragment anpf =new ANPFromFragment();
+        EventConfirmFragment ecf = new EventConfirmFragment();
 
         String fname = bd.getString("fname");
 
@@ -44,10 +47,19 @@ public class ExtraActivity extends AppCompatActivity {
                     .commit();
 
             Toast.makeText(this,fname,Toast.LENGTH_SHORT).show();
+        } else if (fname.equals("ANPF")) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fc_extra, anpf)
+                    .commit();
+
+            Toast.makeText(this,fname,Toast.LENGTH_SHORT).show();
+        } else if(fname.equals("ECPF")){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fc_extra, ecf)
+                    .commit();
         }
-
-
-
 
 
     }

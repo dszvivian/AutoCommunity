@@ -7,12 +7,16 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.autocommunity.api.ApiRepo;
 import com.example.autocommunity.model.Asset;
+import com.example.autocommunity.model.CompletePostModel;
+import com.example.autocommunity.model.Post;
 import com.example.autocommunity.model.ProfileDetails;
 import com.example.autocommunity.model.Results;
 import com.example.autocommunity.model.User;
+import com.example.autocommunity.model.UserDetails;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ApiViewModel extends ViewModel {
@@ -22,11 +26,19 @@ public class ApiViewModel extends ViewModel {
     private androidx.lifecycle.MutableLiveData<Boolean> isUserAdded;
     private androidx.lifecycle.MutableLiveData<List<User>> getUser;
 
+    private androidx.lifecycle.MutableLiveData<List<UserDetails>> getAllUser;
+
     private androidx.lifecycle.MutableLiveData<List<ProfileDetails>> getProfileDetails;
 
     private  androidx.lifecycle.MutableLiveData<Boolean> isProfileInfoUpdated;
 
     private  androidx.lifecycle.MutableLiveData<Boolean> isAssetAdded;
+
+    private androidx.lifecycle.MutableLiveData<List<Asset>> getAssetsByUsername;
+    private androidx.lifecycle.MutableLiveData<ArrayList<CompletePostModel>> getAllPosts;
+    private androidx.lifecycle.MutableLiveData<ArrayList<Post>> getAllPostsByUsername;
+
+    private  androidx.lifecycle.MutableLiveData<Boolean> addNewPost;
 
     public ApiViewModel(){
         repo = new ApiRepo();
@@ -75,6 +87,43 @@ public class ApiViewModel extends ViewModel {
         return isAssetAdded;
     }
 
+    public MutableLiveData<List<Asset>> getAssetsByUsername(String username){
+
+        if(getAssetsByUsername==null){
+            getAssetsByUsername = repo.getAssetsByUsername(username);
+        }
+
+        return getAssetsByUsername;
+    }
+
+
+    public MutableLiveData<List<UserDetails>> getAllUsers(){
+        if(getAllUser==null){
+            getAllUser = repo.getAllUsers();
+        }
+        return getAllUser;
+    }
+
+    public MutableLiveData<ArrayList<CompletePostModel>> getAllPosts(){
+        if (getAllPosts == null) {
+            getAllPosts = repo.getAllPosts();
+        }
+        return getAllPosts;
+    }
+
+    public MutableLiveData<Boolean> addNewPost(String username,Post post){
+        if(addNewPost==null){
+            addNewPost = repo.addNewPost(username, post);
+        }
+        return addNewPost;
+    }
+
+    public MutableLiveData<ArrayList<Post>> getAllPostsByUsername(String username){
+        if(getAllPostsByUsername==null){
+            getAllPostsByUsername = repo.getAllPostsByUsername(username);
+        }
+        return getAllPostsByUsername;
+    }
 
 
 }

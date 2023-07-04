@@ -12,10 +12,11 @@
         android:layout_height="400dp"
         android:layout_marginTop="32dp"
         android:padding="20dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bike1" />
+        app:srcCompat="@drawable/slide33" />
 
     <TextView
         android:id="@+id/tv_titlevpobslide3"
@@ -45,7 +46,9 @@
         android:gravity="center"
         android:padding="10dp"
         android:text="@string/vpOBThird_slide_desc"
-        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:textStyle="normal|bold"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_titlevpobslide3" />

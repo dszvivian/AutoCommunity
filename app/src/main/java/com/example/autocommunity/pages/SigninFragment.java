@@ -1,5 +1,6 @@
 package com.example.autocommunity.pages;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,9 @@ import androidx.lifecycle.Observer;
 import androidx.navigation.Navigation;
 
 import com.example.autocommunity.ApiViewModel;
+import com.example.autocommunity.Preferences;
 import com.example.autocommunity.R;
+import com.example.autocommunity.activities.MainActivity;
 import com.example.autocommunity.model.User;
 
 import java.util.List;
@@ -26,6 +29,8 @@ public class SigninFragment extends Fragment {
     AppCompatButton btnSignIn;
     TextView tvNavigateToSinUp;
     EditText etEmail,etPassword;
+
+    Preferences pf;
 
     @Nullable
     @Override
@@ -41,6 +46,14 @@ public class SigninFragment extends Fragment {
         etPassword = view.findViewById(R.id.etPasswordSignIn);
         btnSignIn = view.findViewById(R.id.btnSignIn);
         tvNavigateToSinUp = view.findViewById(R.id.tvNavigateToSignUp);
+
+
+        pf = new Preferences();
+        String username = pf.isLoggedIn(requireActivity());
+        if(!username.isEmpty()){
+            startActivity(new Intent(requireActivity(), MainActivity.class));
+        }
+
 
         //If you don't Have a Account
         tvNavigateToSinUp.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +83,7 @@ public class SigninFragment extends Fragment {
 
                             if(user.getPassword().equals(password)){
                                 Toast.makeText(requireActivity(),"SignIn Successful",Toast.LENGTH_SHORT).show();
+                                pf.saveData(requireActivity(),username);
                                 requireActivity().finish();
                                 Navigation.findNavController(requireActivity(),R.id.fragmentAuth)
                                         .navigate(R.id.action_signinFragment_to_mainActivity);
