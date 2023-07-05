@@ -72,6 +72,12 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.miDiscuss:
                         getSupportFragmentManager()
                                 .beginTransaction()
+                                .replace(R.id.fragmentContainerView, discussionFragment)
+                                .commit();
+                        return true;
+                    case R.id.miEvent:
+                        getSupportFragmentManager()
+                                .beginTransaction()
                                 .replace(R.id.fragmentContainerView, eventsFragment)
                                 .commit();
                         return true;

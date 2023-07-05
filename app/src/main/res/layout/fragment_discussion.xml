@@ -21,9 +21,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDiscuss"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constrainedHeight="true"
+        android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayoutCompat"
         app:layout_constraintEnd_toEndOf="parent"
         tools:listitem="@layout/message_item"
@@ -39,27 +41,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <EditText
-            android:id="@+id/editTextTextPersonName2"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDiscussMessage"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_weight="1"
             android:ems="10"
             android:padding="10dp"
-            android:hint="Name"
-            android:inputType="textPersonName" />
+            android:hint="type..."
+            android:inputType="textAutoComplete" />
 
-        <Button
-            android:id="@+id/button2"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDiscussMessageSend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
+            android:layout_gravity="center"
             android:text="send" />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
