@@ -4,9 +4,13 @@ public class MessageModel {
 
     String username,message;
 
-    public MessageModel(String username, String message) {
+    public MessageModel(String username,String message) {
         this.username = username;
         this.message = message;
+    }
+
+    public MessageModel() {
+
     }
 
     public String getUsername() {

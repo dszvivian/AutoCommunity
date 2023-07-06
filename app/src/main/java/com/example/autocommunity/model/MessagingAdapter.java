@@ -1,5 +1,6 @@
 package com.example.autocommunity.model;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,17 +9,27 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.autocommunity.Preferences;
 import com.example.autocommunity.R;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class MessagingAdapter extends RecyclerView.Adapter<MessagingAdapter.ViewHolder> {
 
-    public MessagingAdapter(ArrayList<MessageModel> messages) {
+
+
+
+    public MessagingAdapter(Context context, ArrayList<MessageModel> messages) {
         this.messages = messages;
+        this.context = context;
     }
 
     ArrayList<MessageModel> messages = new ArrayList<>();
+    Context context;
 
 
     @NonNull
@@ -31,7 +42,13 @@ public class MessagingAdapter extends RecyclerView.Adapter<MessagingAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MessageModel item = messages.get(position);
 
-        if(item.getUsername().equals("dszvivian")){
+
+        Preferences pf =new Preferences();
+        String username = pf.isLoggedIn(context);
+
+//        holder.tvSender.setText(item.getUsername());
+
+        if(Objects.equals(item.username, "dszvivian")){
             holder.tvSender.setVisibility(View.VISIBLE);
             holder.tvSender.setText(item.getMessage());
             holder.tvReciever.setVisibility(View.GONE);
@@ -40,7 +57,6 @@ public class MessagingAdapter extends RecyclerView.Adapter<MessagingAdapter.View
             holder.tvReciever.setText(item.getMessage());
             holder.tvSender.setVisibility(View.GONE);
         }
-
 
     }
 
