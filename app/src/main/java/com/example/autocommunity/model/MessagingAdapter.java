@@ -48,14 +48,21 @@ public class MessagingAdapter extends RecyclerView.Adapter<MessagingAdapter.View
 
 //        holder.tvSender.setText(item.getUsername());
 
-        if(Objects.equals(item.username, "dszvivian")){
-            holder.tvSender.setVisibility(View.VISIBLE);
-            holder.tvSender.setText(item.getMessage());
-            holder.tvReciever.setVisibility(View.GONE);
-        }else{
+
+        //todo: fix the naming sender<-->receiver
+        if(Objects.equals(item.username, username)){
             holder.tvReciever.setVisibility(View.VISIBLE);
             holder.tvReciever.setText(item.getMessage());
+            holder.tvSenderUsername.setVisibility(View.GONE);
             holder.tvSender.setVisibility(View.GONE);
+        }else{
+            holder.tvSenderUsername.setVisibility(View.VISIBLE);
+            holder.tvSender.setVisibility(View.VISIBLE);
+            holder.tvSender.setText(item.getMessage());
+            holder.tvSenderUsername.setText(item.getUsername());
+            holder.tvReciever.setVisibility(View.GONE);
+
+
         }
 
     }
@@ -66,12 +73,13 @@ public class MessagingAdapter extends RecyclerView.Adapter<MessagingAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-         TextView tvSender,tvReciever;
+         TextView tvSender,tvReciever,tvSenderUsername;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvSender = itemView.findViewById(R.id.tv_message);
             tvReciever = itemView.findViewById(R.id.tv_bot_message);
+            tvSenderUsername = itemView.findViewById(R.id.tvSenderUsername);
         }
     }
 

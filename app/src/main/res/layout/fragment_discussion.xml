@@ -51,13 +51,15 @@
             android:hint="type..."
             android:inputType="textAutoComplete" />
 
-        <com.google.android.material.button.MaterialButton
+        <ImageView
             android:id="@+id/btnDiscussMessageSend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="5dp"
             android:layout_margin="4dp"
             android:layout_gravity="center"
-            android:text="send" />
+            android:contentDescription="Wer"
+            android:src="@drawable/baseline_send_24"/>
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

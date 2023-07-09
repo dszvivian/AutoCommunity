@@ -1,10 +1,24 @@
 package com.example.autocommunity.model;
 
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.ServerTimestamp;
+
 public class MessageModel {
 
-    String username,message;
+    String username;
+    String message;
+    @ServerTimestamp
+    Timestamp timestamp;
 
-    public MessageModel(String username,String message) {
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public MessageModel(String username, String message, Timestamp timestamp) {
         this.username = username;
         this.message = message;
     }
@@ -28,4 +42,6 @@ public class MessageModel {
     public void setMessage(String message) {
         this.message = message;
     }
+
+
 }

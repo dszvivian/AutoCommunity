@@ -2,24 +2,47 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_margin="10dp"
     android:layout_height="wrap_content">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tv_message"
-        android:layout_width="0dp"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/senderSection"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="4dp"
         android:background="@drawable/snd_msg"
-        android:padding="14dp"
-        android:text="This is a sample message that will appear"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        android:visibility="visible"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvSenderUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingStart="15dp"
+            android:textStyle="bold"
+            android:text="dszvivian" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:padding="14dp"
+            android:minWidth="200dp"
+            android:text="This is a sample message that will appear"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_bot_message"
@@ -30,11 +53,13 @@
         android:background="@drawable/rcv_msg"
         android:padding="14dp"
         android:text="This is a sample message that will appear"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_message" />
+        app:layout_constraintTop_toBottomOf="@+id/senderSection" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

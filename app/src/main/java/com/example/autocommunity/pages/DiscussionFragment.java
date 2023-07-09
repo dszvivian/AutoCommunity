@@ -9,10 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,6 +28,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
@@ -35,6 +40,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.ServerTimestamp;
 import com.google.firebase.firestore.model.Document;
 import com.google.firebase.storage.StorageReference;
 
@@ -46,7 +52,7 @@ public class DiscussionFragment extends Fragment {
 
     EditText etMessage;
     RecyclerView rvDiscuss;
-    Button btnSend;
+    ImageView btnSend;
 
     FirebaseFirestore db ;
     CollectionReference dbRef;
@@ -77,7 +83,6 @@ public class DiscussionFragment extends Fragment {
 
 
         list = new ArrayList<>();
-        list.add(new MessageModel("dszvivian","default message"));
         adapter = new MessagingAdapter(requireActivity(),list);
         rvDiscuss.setAdapter(adapter);
 
@@ -101,19 +106,24 @@ public class DiscussionFragment extends Fragment {
                 adapter.addMessage(m1);
                 etMessage.setText("");*/
 
-                dbRef.add(new MessageModel(username,msg) ).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(requireActivity(),"msg added",Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d("FirebaseError",e.getMessage());
-                    }
-                });
+                if(!msg.isEmpty()){
+                    dbRef.add(new MessageModel(username,msg,null ) ).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Toast.makeText(requireActivity(),"msg added",Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d("FirebaseError",e.getMessage());
+                        }
+                    });
 
-                etMessage.setText("");
+                    etMessage.setText("");
+                }
+
+
+
 
             }
         });
@@ -122,49 +132,26 @@ public class DiscussionFragment extends Fragment {
 
     private void getMessages() {
 
-//        dbRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
-//            @Override
-//            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-//                if (error != null) {
-//                    Log.e("FirebaseError", "Listen failed.", error);
-//                    return;
-//                }
-//
-//                for(DocumentChange dc : value.getDocumentChanges()){
-//                    if(dc.getType() == DocumentChange.Type.ADDED){
-//                        list.add(dc.getDocument().toObject(MessageModel.class));
-//                        Log.w("FirebaseResult", dc.getDocument().toObject(MessageModel.class).toString() );
-//                    }
-//                    adapter.notifyDataSetChanged();
-//
-//                }
-//
-//
-//
-//
-//
-//
-//
-//            }
-//        });
-
-
-        dbRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        dbRef.orderBy("timestamp", Query.Direction.ASCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                List<DocumentSnapshot> ds = queryDocumentSnapshots.getDocuments();
-                for(DocumentSnapshot q:ds){
-                    list.add(q.toObject(MessageModel.class));
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if (error != null) {
+                    Log.e("FirebaseError", "Listen failed.", error);
+                    return;
                 }
-//                Log.d("FirebaseResult",list.get(2).getMessage());
-                adapter.notifyDataSetChanged();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d("FirebaseError",e.getMessage());
+
+                for(DocumentChange dc : value.getDocumentChanges()){
+                    if(dc.getType() == DocumentChange.Type.ADDED ){
+                        list.add(dc.getDocument().toObject(MessageModel.class));
+                        Log.w("FirebaseResult", dc.getDocument().toObject(MessageModel.class).toString());
+                    }
+                    adapter.notifyDataSetChanged();
+
+                }
+
             }
         });
+
 
     }
 }
