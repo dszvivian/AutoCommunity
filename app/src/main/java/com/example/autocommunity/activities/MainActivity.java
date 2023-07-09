@@ -3,7 +3,11 @@ package com.example.autocommunity.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -48,45 +52,44 @@ public class MainActivity extends AppCompatActivity {
 
         connect();
 
-        setBnv();
+        NavController nc = Navigation.findNavController(this,R.id.fragmentContainerView);
+        NavigationUI.setupWithNavController(bnv,nc);
+
+
 
     }
 
-    private void setBnv() {
-        bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()){
-                    case R.id.miHome:
-                        getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.fragmentContainerView, homeFragment)
-                                .commit();
-                        return true;
-                    case R.id.miSearch:
-                        getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.fragmentContainerView, searchFragment)
-                                .commit();
-                        return true;
-                    case R.id.miDiscuss:
-                        getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.fragmentContainerView, eventsFragment)
-                                .commit();
-                        return true;
-                    case R.id.miProfile:
-                        getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.fragmentContainerView, profileFragment)
-                                .commit();
-                        return true;
-                }
-
-                return false;
-            }
-        });
-    }
+//    private void setBnv(Activity activity) {
+//        bnv.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch(item.getItemId()){
+//                    case R.id.homeFragment:
+//                        Navigation.findNavController(activity, R.id.fragmentContainerView)
+//                                .navigate(R.id.action_homeFragment_self);
+//                        return true;
+//                    case R.id.searchFragment:
+//                        Navigation.findNavController(activity, R.id.fragmentContainerView)
+//                                .navigate(R.id.action_homeFragment_to_searchFragment);
+//                        return true;
+//                    case R.id.discussionFragment:
+//                        Navigation.findNavController(activity, R.id.fragmentContainerView)
+//                                .navigate(R.id.action_homeFragment_to_discussionFragment);
+//                        return true;
+//                    case R.id.eventsFragment:
+//                        Navigation.findNavController(activity, R.id.fragmentContainerView)
+//                                .navigate(R.id.action_homeFragment_to_eventsFragment);
+//                        return true;
+//                    case R.id.profileFragment:
+//                        Navigation.findNavController(activity, R.id.fragmentContainerView)
+//                                .navigate(R.id.action_homeFragment_to_profileFragment2);
+//                        return true;
+//                }
+//
+//                return false;
+//            }
+//        });
+//    }
 
     private void connect() {
 
