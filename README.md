@@ -28,7 +28,7 @@ with custom Backend [Repo Link](https://github.com/dszvivian/AutoCommunityAppBac
 
 ***Try latest AutoVerse app apk from below 👇***
 
-[<img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_homePage.png?alt=media&token=8ea96e1f-bbf8-4fb5-a5a0-83d781967967">](https://github.com/Spikeysanju/Expenso/releases/download/v1.0.0-alpha01/Expenso.apk)
+[<img src="https://seeklogo.com/images/D/download-android-apk-badge-logo-D074C6882B-seeklogo.com.png">](https://github.com/Spikeysanju/Expenso/releases/download/v1.0.0-alpha01/Expenso.apk)
 
 <br />
 
