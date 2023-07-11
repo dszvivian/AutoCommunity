@@ -31,69 +31,21 @@ with custom Backend [Repo Link](https://github.com/dszvivian/AutoCommunityAppBac
 
 ## Screenshots
 
+<p align="center">
+  <img src="https://ibb.co/tYhpVPw" width="350" title="hover text">
+  <img src="https://ibb.co/FXpVDSs" width="350" alt="accessibility text">
+  <img src="https://ibb.co/BBSnjLK" width="350" alt="accessibility text">
+  <img src="https://ibb.co/zPzfCZV" width="350" alt="accessibility text">
+  <img src="https://ibb.co/jDDpv8v" width="350" alt="accessibility text">
+  <img src="https://ibb.co/PFYHtkc" width="350" alt="accessibility text">
+  <img src="https://ibb.co/zmJ9XGs" width="350" alt="accessibility text">
+  <img src="https://ibb.co/TKk2F1z" width="350" alt="accessibility text">
+  <img src="https://ibb.co/dMCmv4r" width="350" alt="accessibility text">
+</p>
 
-<details>
-  <summary>Screen 1</summary>
-  <p align="center">
-    <img src="path/to/screenshot1.png" alt="Screenshot 1">
-  </p>
-</details>
 
-<details>
-  <summary>Screen 2</summary>
-  <p align="center">
-    <img src="path/to/screenshot2.png" alt="Screenshot 2">
-  </p>
-</details>
+ 
 
-<details>
-  <summary>Screen 3</summary>
-  <p align="center">
-    <img src="path/to/screenshot3.png" alt="Screenshot 3">
-  </p>
-</details>
-
-<details>
-  <summary>Screen 4</summary>
-  <p align="center">
-    <img src="path/to/screenshot4.png" alt="Screenshot 4">
-  </p>
-</details>
-
-<details>
-  <summary>Screen 5</summary>
-  <p align="center">
-    <img src="path/to/screenshot5.png" alt="Screenshot 5">
-  </p>
-</details>
-
-<details>
-  <summary>Screen 6</summary>
-  <p align="center">
-    <img src="path/to/screenshot6.png" alt="Screenshot 6">
-  </p>
-</details>
-
-<details>
-  <summary>Screen 7</summary>
-  <p align="center">
-    <img src="path/to/screenshot7.png" alt="Screenshot 7">
-  </p>
-</details>
-
-<details>
-  <summary>Screen 8</summary>
-  <p align="center">
-    <img src="path/to/screenshot8.png" alt="Screenshot 8">
-  </p>
-</details>
-
-<details>
-  <summary>Screen 9</summary>
-  <p align="center">
-    <img src="path/to/screenshot9.png" alt="Screenshot 9">
-  </p>
-</details>
 ## 🔗 Links
 [![portfolio](https://img.shields.io/badge/my_GitHUb-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/dszvivian/)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/dszvivian/)
