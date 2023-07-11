@@ -31,20 +31,18 @@ with custom Backend [Repo Link](https://github.com/dszvivian/AutoCommunityAppBac
 
 ## Screenshots
 
-![My animated logo](https://images.pexels.com/photos/15746995/pexels-photo-15746995/free-photo-of-traditional-architecture-with-brick-walls-wooden-doors-and-a-tiled-roof.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
-
-<p align="center">
-  <img src="https://ibb.co/tYhpVPw" width="350" title="hover text">
-  <img src="https://ibb.co/FXpVDSs" width="350" alt="accessibility text">
-  <img src="https://ibb.co/BBSnjLK" width="350" alt="accessibility text">
-  <img src="https://ibb.co/zPzfCZV" width="350" alt="accessibility text">
-  <img src="https://ibb.co/jDDpv8v" width="350" alt="accessibility text">
-  <img src="https://ibb.co/PFYHtkc" width="350" alt="accessibility text">
-  <img src="https://ibb.co/zmJ9XGs" width="350" alt="accessibility text">
-  <img src="https://ibb.co/TKk2F1z" width="350" alt="accessibility text">
-  <img src="https://ibb.co/dMCmv4r" width="350" alt="accessibility text">
-</p>
-
+<table>
+  <tr>
+    <td>Home Page</td>
+     <td>Search Page</td>
+     <td>Discussion Page</td>
+  </tr>
+  <tr>
+    <td><img src="[screenshots/Screenshot_1582745092.png](https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_homePage.png?alt=media&token=8ea96e1f-bbf8-4fb5-a5a0-83d781967967)" width=270 height=480></td>
+    <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_searchPage.png?alt=media&token=77f9417b-f99d-43a2-a86c-a2230869fac6" width=270 height=480></td>
+    <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_discussionPage.png?alt=media&token=4c009ed9-89d4-4cc2-a900-31863e225d33" width=270 height=480></td>
+  </tr>
+ </table>
 
  
 
