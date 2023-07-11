@@ -111,6 +111,7 @@ public class DiscussionFragment extends Fragment {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                             Toast.makeText(requireActivity(),"msg added",Toast.LENGTH_SHORT).show();
+                            rvDiscuss.scrollToPosition(adapter.getItemCount()-1);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
