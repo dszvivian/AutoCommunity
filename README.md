@@ -38,9 +38,37 @@ with custom Backend [Repo Link](https://github.com/dszvivian/AutoCommunityAppBac
      <td>Discussion Page</td>
   </tr>
   <tr>
-    <td><img src="[screenshots/Screenshot_1582745092.png](https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_homePage.png?alt=media&token=8ea96e1f-bbf8-4fb5-a5a0-83d781967967)" width=270 height=480></td>
+    <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_homePage.png?alt=media&token=8ea96e1f-bbf8-4fb5-a5a0-83d781967967" width=270 height=480></td>
     <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_searchPage.png?alt=media&token=77f9417b-f99d-43a2-a86c-a2230869fac6" width=270 height=480></td>
     <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_discussionPage.png?alt=media&token=4c009ed9-89d4-4cc2-a900-31863e225d33" width=270 height=480></td>
+  </tr>
+ </table>
+
+
+ <table>
+  <tr>
+    <td>Events Page</td>
+     <td>Profile page</td>
+     <td>Edit Profile Page</td>
+  </tr>
+  <tr>
+    <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_eventsPage.png?alt=media&token=392aab89-fe04-4349-85ea-0de86f5a0651" width=270 height=480></td>
+    <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_profilePage.png?alt=media&token=9cb5dbfc-eac1-4489-a13a-a74b35c73728" width=270 height=480></td>
+    <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_enterBioPage.png?alt=media&token=8b941a0b-8ac6-4c38-a19e-ab274fb9d4ee" width=270 height=480></td>
+  </tr>
+ </table>
+
+
+ <table>
+  <tr>
+    <td>OnBoarding Page</td>
+     <td>Login Page</td>
+     <td>Add New Vehicle Page</td>
+  </tr>
+  <tr>
+    <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_eventsPage.png?alt=media&token=392aab89-fe04-4349-85ea-0de86f5a0651" width=270 height=480></td>
+    <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_loginPage.png?alt=media&token=b9c5315b-454f-4d1d-9eef-d64e14d09fce" width=270 height=480></td>
+    <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_addVehiclepage.png?alt=media&token=de94f7df-815c-4fb4-ac97-4517513cccf4" width=270 height=480></td>
   </tr>
  </table>
 
