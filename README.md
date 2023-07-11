@@ -24,7 +24,7 @@ with custom Backend [Repo Link](https://github.com/dszvivian/AutoCommunityAppBac
 - MVVM Reposiory pattern
 - SharedPreferences( For storing user details and Auto Login)
 
-- <br />
+  <br />
 
 ***Try latest AutoVerse app apk from below 👇***
 
