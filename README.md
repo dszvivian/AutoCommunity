@@ -24,6 +24,14 @@ with custom Backend [Repo Link](https://github.com/dszvivian/AutoCommunityAppBac
 - MVVM Reposiory pattern
 - SharedPreferences( For storing user details and Auto Login)
 
+- <br />
+
+***Try latest AutoVerse app apk from below 👇***
+
+[![AutoVerse](https://img.shields.io/badge/Expenso-APK-black.svg?style=for-the-badge&logo=android)](https://github.com/Spikeysanju/Expenso/releases/download/v1.0.0-alpha01/Expenso.apk)
+
+<br />
+
 
 
 
