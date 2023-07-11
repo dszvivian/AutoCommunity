@@ -5,14 +5,14 @@ An app for Auto enthusiast.
 
 ## Features of the app
 
-- Posting about your Page
-- Discussion Page
+- Posting about your Page 
+- Discussion Page 
 - Register for Events
 - Profile Page
 
-## Description
+## Description 
 
-My main intention while building this app was to Learn Backend Developement,so i tried doing a simple app,
+My main intention while building this app was to Learn Backend Developement,so i tried doing a simple app, 
 with custom Backend [Repo Link](https://github.com/dszvivian/AutoCommunityAppBackend).
 
 ## Tech Stack
@@ -24,79 +24,74 @@ with custom Backend [Repo Link](https://github.com/dszvivian/AutoCommunityAppBac
 - MVVM Reposiory pattern
 - SharedPreferences( For storing user details and Auto Login)
 
+
+
+
+
+
 ## Screenshots
 
 
-https://ibb.co/tYhpVPw
-https://ibb.co/FXpVDSs
-https://ibb.co/BBSnjLK
-https://ibb.co/zPzfCZV
-https://ibb.co/jDDpv8v
-https://ibb.co/PFYHtkc
-https://ibb.co/zmJ9XGs
-https://ibb.co/TKk2F1z
-https://ibb.co/dMCmv4r
-
 <details>
-  <summary>Home Page</summary>
+  <summary>Screen 1</summary>
   <p align="center">
-    <img src="https://ibb.co/tYhpVPw" alt="Screenshot 1">
+    <img src="path/to/screenshot1.png" alt="Screenshot 1">
   </p>
 </details>
 
 <details>
-  <summary>Search Page</summary>
+  <summary>Screen 2</summary>
   <p align="center">
-    <img src="https://ibb.co/FXpVDSs" alt="Screenshot 2">
+    <img src="path/to/screenshot2.png" alt="Screenshot 2">
   </p>
 </details>
 
 <details>
-  <summary>Discussions Page</summary>
+  <summary>Screen 3</summary>
   <p align="center">
-    <img src="https://ibb.co/BBSnjLK" alt="Screenshot 3">
+    <img src="path/to/screenshot3.png" alt="Screenshot 3">
   </p>
 </details>
 
 <details>
-  <summary>Events Page</summary>
+  <summary>Screen 4</summary>
   <p align="center">
-    <img src="https://ibb.co/zPzfCZV" alt="Screenshot 4">
+    <img src="path/to/screenshot4.png" alt="Screenshot 4">
   </p>
 </details>
 
 <details>
   <summary>Screen 5</summary>
   <p align="center">
-    <img src="https://ibb.co/jDDpv8v" alt="Screenshot 5">
+    <img src="path/to/screenshot5.png" alt="Screenshot 5">
   </p>
 </details>
 
 <details>
   <summary>Screen 6</summary>
   <p align="center">
-    <img src="https://ibb.co/PFYHtkc" alt="Screenshot 6">
+    <img src="path/to/screenshot6.png" alt="Screenshot 6">
   </p>
 </details>
 
 <details>
   <summary>Screen 7</summary>
   <p align="center">
-    <img src="https://ibb.co/zmJ9XGs" alt="Screenshot 7">
+    <img src="path/to/screenshot7.png" alt="Screenshot 7">
   </p>
 </details>
 
 <details>
   <summary>Screen 8</summary>
   <p align="center">
-    <img src="https://ibb.co/TKk2F1z" alt="Screenshot 8">
+    <img src="path/to/screenshot8.png" alt="Screenshot 8">
   </p>
 </details>
 
 <details>
   <summary>Screen 9</summary>
   <p align="center">
-    <img src="https://ibb.co/dMCmv4r" alt="Screenshot 9">
+    <img src="path/to/screenshot9.png" alt="Screenshot 9">
   </p>
 </details>
 ## 🔗 Links
