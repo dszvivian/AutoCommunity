@@ -66,7 +66,7 @@ with custom Backend [Repo Link](https://github.com/dszvivian/AutoCommunityAppBac
      <td>Add New Vehicle Page</td>
   </tr>
   <tr>
-    <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_eventsPage.png?alt=media&token=392aab89-fe04-4349-85ea-0de86f5a0651" width=270 height=480></td>
+    <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_onboarding%20screen.png?alt=media&token=53dbef64-9bc9-433c-84e1-9a0716d46cb1" width=270 height=480></td>
     <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_loginPage.png?alt=media&token=b9c5315b-454f-4d1d-9eef-d64e14d09fce" width=270 height=480></td>
     <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_addVehiclepage.png?alt=media&token=de94f7df-815c-4fb4-ac97-4517513cccf4" width=270 height=480></td>
   </tr>
