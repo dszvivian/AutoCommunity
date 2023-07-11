@@ -31,6 +31,8 @@ with custom Backend [Repo Link](https://github.com/dszvivian/AutoCommunityAppBac
 
 ## Screenshots
 
+![My animated logo](https://ibb.co/tYhpVPw)
+
 <p align="center">
   <img src="https://ibb.co/tYhpVPw" width="350" title="hover text">
   <img src="https://ibb.co/FXpVDSs" width="350" alt="accessibility text">
