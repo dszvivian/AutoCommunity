@@ -52,9 +52,9 @@ with custom Backend [Repo Link](https://github.com/dszvivian/AutoCommunityAppBac
      <td>Edit Profile Page</td>
   </tr>
   <tr>
-    <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_eventsPage.png?alt=media&token=392aab89-fe04-4349-85ea-0de86f5a0651" width=270 height=480></td>
-    <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_profilePage.png?alt=media&token=9cb5dbfc-eac1-4489-a13a-a74b35c73728" width=270 height=480></td>
-    <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_enterBioPage.png?alt=media&token=8b941a0b-8ac6-4c38-a19e-ab274fb9d4ee" width=270 height=480></td>
+    <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_eventsPage.png?alt=media&token=392aab89-fe04-4349-85ea-0de86f5a0651"></td>
+    <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_profilePage.png?alt=media&token=9cb5dbfc-eac1-4489-a13a-a74b35c73728"></td>
+    <td><img src="https://firebasestorage.googleapis.com/v0/b/autocommunity-937ec.appspot.com/o/screenshots%2Fss_enterBioPage.png?alt=media&token=8b941a0b-8ac6-4c38-a19e-ab274fb9d4ee"></td>
   </tr>
  </table>
 
